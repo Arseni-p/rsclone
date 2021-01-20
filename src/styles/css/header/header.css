@@ -1,14 +1,17 @@
+@import '../common/colors.css';
+
 .container-xl	 {
   border: 1px dashed red;
 }
 
 .navbar {
   padding: 0;
-  background-color: transparent;
+  background-color: var(--blackOpacity);
 }
 
 .navbar .header-navbar {
-  padding: 5px 15px;
+  padding: 0px 15px;
+  height: 50px;
 }
 
 .navbar-nav {

@@ -1,5 +1,6 @@
 :root {
   --black: #000000;
+  --preloader-bg: #02000a;
   --blackOpacity: rgba(0, 0, 0, 0.9);
   --grey: #b5b5b5;
   --greyBg: #1e2226;
@@ -7,6 +8,7 @@
   --reddark: #9B0000;
   --redlight: #ff2020;
   --green: #10a210;
+  --yellow-text: #e5df54;
   --bs-blue:#0d6efd;
   --bs-indigo:#6610f2;
   --bs-purple:#6f42c1;

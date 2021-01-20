@@ -1,43 +1,29 @@
-import { createElement } from './js/views/createElement';
+'use strict';
+import { preloader } from './js/preloader/preloader.js';
+import { initApp } from './js/init/initApp.js';
 
-const navigateTo = url => {
-  history.pushState(null, null, url);
-  router();
+
+document.body.onload = () => {
+  preloader();
 }
-
-const router = async () => {
-  const routes = [
-    { path: '/src/index.html', view: () => console.log('Viewing Index') },
-    { path: '/src/programm.html', view: () => console.log('Viewing Programm') },
-    { path: '/src/plan.html', view: () => console.log('Viewing Plan') },
-    { path: '/src/stats.html', view: () => console.log('Viewing Stats') },
-    { path: '/src/settings.html', view: () => console.log('Viewing Settings') },
-  ];
-
-  const potentialMatches = routes.map(route => {
-    return {
-      route: route,
-      isMatch: location.pathname === route.path
-    }
-  });
-  let match = potentialMatches.find(potentialMatches => potentialMatches.isMatch)
-  if (!match) {
-    match = {
-      route: routes[0],
-      isMatch: true,
-    }
-  }
-  console.log('111', match.route.view());
-}
-
-window.addEventListener('popstate', router);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.addEventListener('click', e => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault();
-      navigateTo(e.target.href)
-    }
-  })
-  router()
+  //initApp();
 })
+
+const container = document.getElementById('app');
+const navbar = document.querySelector('.navbar-nav');
+
+function locationHashChanged( e ) {
+  console.log( location.hash );
+  console.log( e.oldURL, e.newURL );
+  if ( location.hash === "#program" ) {
+    container.innerHTML = ''
+      const docs = document.createElement('p');
+      
+      container.append(docs);
+      docs.textContent = 'as'
+  }
+}
+
+window.onhashchange = locationHashChanged;

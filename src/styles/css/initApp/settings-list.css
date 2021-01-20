@@ -1,0 +1,243 @@
+:root {
+  --settings-black: #010002;
+}
+
+.presettings-list-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+}
+
+.presettings-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: calc(280px * var(--preloader-settings));
+  height: 280px;
+  display: flex;
+  transition: left 0.4s ease-in-out;
+}
+
+.presettings-item {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.presettings-title {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.presettings-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.man-btn {
+  margin-right: 20px;
+}
+
+.radio-btn {
+  position: relative;
+  padding: 60px 0 5px;
+  width: 70px;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--black);
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  color: white;
+  background-color: transparent;
+}
+
+.radio-btn:hover {
+  background-color: white;
+  color: var(--black);
+  font-weight: bold;
+  transition: background-color 0.3s linear, color 0.3s linear;
+  cursor: pointer;
+}
+
+.presetting-input:checked + label {
+  background-color: white;
+  color: var(--black);
+  font-weight: bold;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3);
+}
+
+.man-btn,
+.woman-btn {
+  background-repeat: no-repeat;
+  background-position: center 5px;
+  background-size: 35px auto;
+  background-color: var(--settings-black);
+}
+
+.man-btn {
+  background-image: url('../../../assets/images/common/man.png');
+}
+
+.woman-btn {
+  background-image: url('../../../assets/images/common/woman.png');
+}
+
+.presettings-btn.btn {
+  width: 120px;
+  margin-top: auto;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background-color: var(--settings-black);
+}
+
+.presettings-btn.btn:hover {
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.1s linear;
+}
+
+.presettings-btn.btn,
+.presettings-btn.btn:active {
+  box-shadow: none;
+  color: white;
+  transition: box-shadow 0.1s linear;
+}
+
+.pressetings-input {
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  width: 100px;
+  border: 1px solid white;
+  transition: background-color 0.2s linear;
+}
+
+.pressetings-input:hover {
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.2s linear;
+}
+
+.program-choice,
+.level-choice {
+  flex-direction: column;
+  width: 70%;
+}
+
+.program-btn,
+.level-btn {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--settings-black);
+}
+
+.program-btn {
+  background-repeat: no-repeat;
+  background-size: 30px auto;
+  background-position: 95% center;
+}
+
+.plank-btn {
+  background-image: url('../../../assets/images/common/icon-plank.png');
+}
+
+.run-btn {
+  background-image: url('../../../assets/images/common/icon-run.png');
+}
+
+.yoga-btn {
+  background-image: url('../../../assets/images/common/icon-yoga.png');
+}
+
+.program-btn:last-child,
+.level-btn:last-child {
+  margin-bottom: 0;
+}
+
+.level-btn {
+  background-repeat: no-repeat;
+  background-size: 12px auto, 12px auto, 12px auto;
+  background-position: 98% center, calc(98% - 12px) center,calc(98% - 24px) center;
+  background-image: 
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-off.png'),
+  url('../../../assets/images/common/icon-level-off.png');
+}
+
+.medium-btn {
+  background-image: 
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-off.png');
+}
+
+.advanced-btn {
+  background-image: 
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-on.png');
+}
+
+@keyframes wrong-title {
+  from {box-shadow: 0 0 30px var(--bs-red);}
+  to {box-shadow: 0 0 30px transparent;}
+}
+
+@keyframes wrong-btn {
+  from {
+    box-shadow: 0 0 20px 0 var(--bs-red);
+  }
+  to {
+    box-shadow: 0 0 20px 0 transparent;
+  }
+}
+
+.wrong-btn-shadow {
+  box-shadow: 0 0 30px transparent;
+  animation: wrong-title 0.5s ease-in-out;
+}
+
+.wrong-btn-shadow.btn:hover {
+  box-shadow: 0 0 30px transparent;
+  box-shadow: none;
+}
+
+.wrong-btn.btn {
+  border-color: var(--bs-red);
+  color: var(--bs-red);
+  transition: border-color 0.3s linear, color 0.3s linear;
+}
+
+.wrong-btn.btn:hover {
+  box-shadow: 0 0 10px 0 transparent;
+}
+
+.wrong-btn.btn:active {
+  color: var(--bs-red);
+}
+
+.wrong-item {
+  color: var(--bs-red);
+  transition: color 0.2s ease-in-out;
+}
+
+.checked-item {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}

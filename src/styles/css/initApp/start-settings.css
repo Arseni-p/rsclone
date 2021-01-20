@@ -1,0 +1,125 @@
+.blackout {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 70px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--preloader-bg);
+  z-index: 98;
+}
+
+.blackout-on {
+  display: block;
+}
+
+.blackout-move {
+  left: -105%;
+  right: auto;
+  transition: left 0.7s ease-in-out 0.6s;
+}
+
+.presettings-wrapper {
+  position: absolute;
+  left: calc(50% - 140px);
+  top: 70px;
+  margin: 0 auto;
+  padding-top: 10px;
+  color: white;
+  letter-spacing: 1px;
+  width: 280px;
+  height: 330px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 20px 0 white;
+}
+
+@keyframes presettings-off {
+  from {top: 70px};
+  to {top: -105%};
+}
+
+.presettings-wrapper-off {
+  top: -105%;
+  transition: top 0.5s ease-in-out;
+}
+
+.text-intro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 0.8rem;
+  width: 200px;
+}
+
+.shy-smile {
+  display: inline-block;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  background: url('../../../assets/images/common/smile.png') no-repeat 0 center;
+  background-size: contain;
+}
+
+.back {
+  display: none;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.back::before,
+.back::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+}
+
+.back::before {
+  left: calc(50% - 5px);
+  top: calc(50% - 1px);
+  border: 1px solid white;
+}
+
+.back:after {
+  left: 5px;
+  top: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border: 2px solid white;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  transform: rotate(-45deg);
+}
+
+.back:hover {
+  border-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s linear;
+}
+
+.back:active {
+  background-color: white;
+  transition: background-color 0.2s linear;
+}
+
+.back:active::before,
+.back:active::after {
+  border-color: var(--black);
+  transition: border-color 0.2s linear;
+}
+
+.back:hover::after,
+.back:active::after {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}

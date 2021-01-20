@@ -1,5 +1,11 @@
 @import 'common/common.css';
+@import 'common/colors.css';
+@import 'preloader/preloader.css';
+@import 'initApp/start-settings.css';
+@import 'initApp/settings-list.css';
 @import 'header/header.css';
 @import 'view/view.css';
+@import 'main-page/main-page.css';
+
 
 
