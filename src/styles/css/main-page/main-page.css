@@ -7,6 +7,11 @@
   color: white;
 }
 
+.man-plank {
+  background: url('../../../assets/images/plank/man/bg-main-page.png') no-repeat 100% 100%;
+  background-size: 50% auto;
+}
+
 .text-block {
   margin-left: 110px;
 }

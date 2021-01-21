@@ -14,6 +14,7 @@ const settings = {
   'level': '',
   'sound': 'on',
   'bmi': '',
+  'theme': 'dark',
 }
 
 export const initApp = () => {

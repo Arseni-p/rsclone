@@ -5,5 +5,5 @@ export const preloader = () => {
 
   setTimeout(() => {
     preloaderItem.classList.add('done')
-  }, 5000)
+  }, 100)//5000)
 }

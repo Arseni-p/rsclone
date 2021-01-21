@@ -1,14 +1,14 @@
 'use strict';
 import { preloader } from './js/preloader/preloader.js';
-import { initApp } from './js/init/initApp.js';
+import { initTheme } from './js/init/initTheme.js';
 
 
 document.body.onload = () => {
-  preloader();
+  //preloader();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  //initApp();
+  initTheme();
 })
 
 const container = document.getElementById('app');
@@ -16,8 +16,8 @@ const navbar = document.querySelector('.navbar-nav');
 
 function locationHashChanged( e ) {
   console.log( location.hash );
-  console.log( e.oldURL, e.newURL );
-  if ( location.hash === "#program" ) {
+  //console.log( e.oldURL, e.newURL );
+  if ( location.hash === "#score" ) {
     container.innerHTML = ''
       const docs = document.createElement('p');
       
