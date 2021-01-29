@@ -1,5 +1,7 @@
 'use strict';
-import { createElement } from '../data/createElement.js'
+import { createElement } from '../data/createElement.js';
+import { initBackground } from './initTheme.js';
+
 
 function wrongAlert() {
   alert('wrong!')
@@ -22,6 +24,9 @@ export const initApp = () => {
   let presettingsCount = 0;
   let currItem = 1;
   const blackout = document.querySelector('.blackout');
+  const blackoutOpacity = document.querySelector('.blackout-opacity');
+  let opacityValue = 1;
+  const opacityGradation = 0.2;
   const presettingsWrapper = document.querySelector('.presettings-wrapper'); 
   const presettingsTitles = document.querySelectorAll('.presettings-title');
   const presettingsBtn = document.querySelectorAll('.presettings-btn');
@@ -69,6 +74,18 @@ export const initApp = () => {
     })
   });
 
+  let opacityOn = () => {
+    opacityValue -= opacityGradation;
+    blackoutOpacity.style.opacity = opacityValue;
+    return opacityValue;
+  }
+
+  let opacityOff = () => {
+    opacityValue += opacityGradation;
+    blackoutOpacity.style.opacity = opacityValue;
+    return opacityValue;
+  }
+
   backBtn.addEventListener('click', () => {
     presettingsTitles.forEach(item => { item.classList.remove('wrong-item') });
     presettingsBtn.forEach(item => { item.classList.remove('wrong-btn') });
@@ -82,6 +99,7 @@ export const initApp = () => {
     presettingsList.style.left = `${leftMove}px`;
     checked = true;
     currItem--;
+    opacityOff()
   })
 
   presettingsList.addEventListener('click', (event) => {
@@ -119,6 +137,7 @@ export const initApp = () => {
     };
 
 
+
     if (presettingsBtnNext && checked && presettingsCount < buttonsArray.length - 1) {
       presettingsTitles.forEach(item => { item.classList.remove('wrong-item')});
       presettingsBtn.forEach(item => {
@@ -131,6 +150,10 @@ export const initApp = () => {
       presettingsList.style.left = `${leftMove}px`;
       checked = false;
       currItem++;
+      opacityOn();
+      if (currItem === 5) {
+        initBackground(settings);
+      }
     } 
 
     if (checkStart && checked) {
@@ -184,6 +207,7 @@ export const initApp = () => {
       presettingsList.style.left = `${leftMove}px`;
       checked = false;
       currItem++;
+      opacityOn();
     }
 
     if (event.keyCode === enterKey && checked && currItem === buttonsArray.length) {

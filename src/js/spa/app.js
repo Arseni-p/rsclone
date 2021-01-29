@@ -1,5 +1,6 @@
 'use strict';
-import { initApp } from '../init/initApp.js'
+import { initApp } from '../init/initApp.js';
+import { initBackground } from '../init/initTheme.js';
 
 (function () {
   let localSettings = localStorage.getItem('settings');
@@ -7,19 +8,23 @@ import { initApp } from '../init/initApp.js'
 
   function init() {
     let gender;
+    let program;
     let lang;
     const initSettings = localStorage.getItem('settings');
     currSettings = JSON.parse(initSettings);
 
     if (currSettings) {
       gender = currSettings.gender;
+      program = currSettings.program;
       lang = currSettings.lang;
     }
 
+    initBackground(currSettings);
+
     var router = new Router([
-      new Route('main', `${gender}/${lang}/main.html`, true),            
-      new Route('program', `${gender}/${lang}/program.html`),
-      new Route('plan', `${gender}/${lang}/plan.html`)
+      new Route('main', `${gender}/${program}/${lang}/main.html`, true),            
+      new Route('program', `${gender}/${program}/${lang}/program.html`),
+      new Route('plan', `${gender}/${program}/${lang}/plan.html`)
     ]);
   }
 
@@ -30,7 +35,7 @@ import { initApp } from '../init/initApp.js'
   }
 
   window.addEventListener('hashchange', () => {
-    init()
+    init();
   })
 }());
 

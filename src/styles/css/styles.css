@@ -5,7 +5,13 @@
 @import 'initApp/settings-list.css';
 @import 'header/header.css';
 @import 'view/view.css';
+@import 'common/main-app.css';
 @import 'main-page/main-page.css';
+@import 'program-page/program-page.css';
+@import 'plan-page/plan-page.css';
+@import 'plan-page/plan-header.css';
+@import 'plan-page/plan-main-container.css';
+
 
 
 

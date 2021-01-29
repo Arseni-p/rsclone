@@ -1,0 +1,6 @@
+.main-app {
+  min-height: calc(100vh - 50px);
+  background-color: rgba( 0, 0, 0, 0.4);
+  display: flex;
+  padding: 0;
+}

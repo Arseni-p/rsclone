@@ -1,14 +1,19 @@
 :root {
   --black: #000000;
-  --preloader-bg: #02000a;
+  --preloader-bg: #191a1f;
+  --whiteOpacity: rgba(255, 255, 255, 0.7);
   --blackOpacity: rgba(0, 0, 0, 0.9);
+  --bg-menu-opacity: rgba(0, 0, 0, 0.6);
+  --textOpacity: rgba(0, 0, 0, 0.7);
   --grey: #b5b5b5;
   --greyBg: #1e2226;
   --red: #ce0707;
   --reddark: #9B0000;
-  --redlight: #ff2020;
+  --redlight: #ff3435;
+  --redor: #f36348;
   --green: #10a210;
   --yellow-text: #e5df54;
+  --yellow-active: #e5df54;
   --bs-blue:#0d6efd;
   --bs-indigo:#6610f2;
   --bs-purple:#6f42c1;

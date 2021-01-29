@@ -24,8 +24,7 @@
   transition: 1s all;
   opacity: 1;
   visibility: visible;
-  display: none;/*DELETE!!!*/
-
+  display: none; /*DELETE!!!*/
 }
 
 .done {

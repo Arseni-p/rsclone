@@ -1,0 +1,291 @@
+
+
+.plan-list-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
+  overflow: hidden;
+  scrollbar-color: pink;
+}
+
+.plan-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 9600px;
+  height: 100%;
+  transition: left 0.5s ease-in-out;
+}
+
+.plan-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 90%;
+  margin-right: 20px;
+  padding: 50px 20px 20px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  transition: height 0.3s ease-in;
+  overflow: hidden;
+}
+
+.plan-item:hover {
+  background-color: var(--preloader-bg);
+  color: white;
+  cursor: pointer;
+}
+
+.item-title,
+.item-day,
+.item-count-wrapper {
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.item-title {
+  font-size: 0.9rem;
+}
+
+.item-day {
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.item-count-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.total-time,
+.total-workout {
+  font-size: 0.9rem;
+  line-height: 1;
+  margin: 0;
+}
+
+.total-time {
+  margin-right: 5px;
+}
+
+.pretrain-btn {
+  margin-top: auto;
+  z-index: 2;
+}
+
+.image-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+  z-index: 1;
+}
+
+.plan-item:nth-child(even) .image-wrapper {
+  background-image: url('../../../assets/images/plan/plank/plank-preview1.jpg');
+}
+
+.plan-item:nth-child(odd) .image-wrapper {
+  background-image: url('../../../assets/images/plan/plank/plank-preview2.jpg');
+}
+
+.image-wrapper::before,
+.image-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.image-wrapper::before {
+  top: -40px;
+  background-image: linear-gradient(to bottom, white 40px, transparent);
+}
+
+.image-wrapper::after {
+  bottom: -40px;
+  background-image: linear-gradient(to top,  white 40px, transparent);
+}
+
+.plan-item:hover .image-wrapper::before {
+  top: -30px;
+  background: linear-gradient(to bottom, var(--preloader-bg) 30px, transparent);
+
+}
+
+.plan-item:hover .image-wrapper::after {
+  bottom: -30px;
+  background-image: linear-gradient(to top,  var(--preloader-bg) 30px, transparent);
+}
+
+.pretrain-btn {
+  background-color: var(--preloader-bg);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.current-day {
+  border: 4px solid var(--yellow-active);
+  transition: border-color 0.5s ease-in, height 0.3s ease-in;
+  font-weight: bold;
+}
+
+.current-day .item-title {
+  font-weight: bold;
+  
+}
+
+.checked-day-height {
+  height: 98%;
+  transition: height 0.3s ease-in 0.3s;
+}
+
+/*
+.plan-list-wrapper::-webkit-scrollbar {
+  height: 8px;
+  background-color: transparent;
+}
+
+.plan-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9em;
+}
+
+.plan-list-wrapper:hover::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-active);
+}
+*/
+.plan-pretrain-btn {
+  position: absolute;
+  top: calc(50% + 50px - 15px);
+  width: 25px;
+  height: 25px;
+  font-size: 0;
+  border: 4px solid white;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.plan-pretrain-btn:hover {
+  border-left-color: rgba(255, 255, 255, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.4);
+  transition: border-color 0.2s linear;
+}
+
+.pretrain-move-left.plan-pretrain-btn:focus,
+.pretrain-move-right.plan-pretrain-btn:focus {
+  outline: none;
+}
+
+.pretrain-move-left {
+  left: 20px;
+  transform: rotate(-45deg)
+}
+
+.pretrain-move-right {
+  right: 20px;
+  transform: rotate(135deg)
+}
+
+.pretrain-move-left:active {
+  transform: rotate(-45deg) scale(0.8);
+  left: 15px;
+  transition: left 0.2s linear, transform 0.1s linear;
+}
+
+.pretrain-move-right:active {
+  transform: rotate(135deg) scale(0.8);
+  right: 15px;
+  transition: right 0.2s linear, transform 0.1s linear;
+}
+
+
+@media(max-width: 991px) {
+  .plan-pretrain-btn {
+    top: calc(50% + 40px - 10px);
+    width: 20px;
+    height: 20px;
+  }
+
+  .pretrain-move-left {
+    left: 10px;
+  }
+  
+  .pretrain-move-right {
+    right: 10px;
+  }
+
+  .pretrain-move-left:active {
+    transform: rotate(-45deg) scale(0.9);
+    left: 5px;
+  }
+
+  .pretrain-move-right:active {
+    transform: rotate(135deg) scale(0.9);
+    right: 5px;
+  }
+}
+
+
+@media(max-width: 767px) {
+
+  .plan-pretrain-btn {
+    top: calc(50% + 40px - 10px);
+    width: 15px;
+    height: 15px;
+    z-index: 20;
+  }
+
+  .btn-bg {
+    position: absolute;
+    top: calc(50% + 30px - 10px);
+    width: 40px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+
+  .btn-bg-left {
+    left: 0;
+  }
+
+  .btn-bg-right {
+    right: 0;
+  }
+
+
+  .pretrain-move-left {
+    left: 15px;
+  }
+  
+  .pretrain-move-right {
+    right: 15px;
+  }
+
+  .pretrain-move-left:active {
+    left: 10px;
+  }
+
+  .pretrain-move-right:active {
+    right: 10px;
+  }
+
+}
+

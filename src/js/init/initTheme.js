@@ -3,13 +3,17 @@ export const initTheme = () => {
   let localSettings = localStorage.getItem('settings');
   let currSettings = JSON.parse(localSettings);
   const defaultTheme = 'dark';
-  const appTheme = currSettings.theme;
-  if (appTheme) {
+  if (currSettings) {
+    const appTheme = currSettings.theme;
     bodyApp.classList.add(appTheme)
   } else {
     bodyApp.classList.add(defaultTheme)
   }
+};
 
+export const initBackground = (settings) => {
+  const mainBody = document.querySelector('.body');
+  mainBody.style.backgroundImage = `url('./assets/images/common/${settings.gender}-${settings.program}.jpg')`
 }
 
 export default initTheme;
