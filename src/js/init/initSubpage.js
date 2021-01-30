@@ -6,7 +6,7 @@ export const initSubpage = () => {
     pageName.innerHTML = `&nbsp;/&nbsp;${location.hash.slice(1)}`
   }
 
-  if (location.hash.slice(1) === 'main') {
+  if (location.hash.slice(1) === 'main' || location.hash.slice(1) === '') {
     pageName.innerHTML = '';
   }
   

@@ -41,41 +41,11 @@ export const planMove = () => {
     let moveRightBtn = false;
     if (event.key === 'ArrowLeft') moveLeftBtn = true;
     if (event.key === 'ArrowRight') moveRightBtn = true;
-
-    movePlanX(moveLeftBtn, moveRightBtn)
-    
+    movePlanX(moveLeftBtn, moveRightBtn);
   })
   
-  /*headerBtns.addEventListener('click', (event) => {
-    const levelBtn = event.target.closest('.plan-header-btn');
-    const levelBtnLeft = levelBtn.classList.contains('header-move-left');
-    const levelBtnRight = levelBtn.classList.contains('header-move-right');
-    if (posCount === 1) {
-      moveX = 250;
-    }
+  
 
-    if (levelBtnLeft && (posCount > posCountMin && posCount <= posCountMax)) {
-      moveX = 275;
-    } 
-
-    if (levelBtnLeft && posCount === posCountMax || levelBtnRight && posCount === posCountMin)  {
-      moveX = 0;
-    }
-
-    if (levelBtn && levelBtnLeft) {
-      console.log(levelBtn.classList.contains('header-move-left'), levelBtnLeft)
-      posX -= moveX;
-    }
-
-    if (levelBtn && levelBtnRight) {
-      posX += moveX;
-    }
-
-    levelList.style.left = `calc(${posX}px)`;
-    posCount++;
-    
-
-  })*/
 }
 
 export default planMove;
