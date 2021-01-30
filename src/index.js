@@ -1,43 +1,55 @@
-import { createElement } from './js/views/createElement';
+'use strict';
+import { preloader } from './js/preloader/preloader.js';
+import { initTheme } from './js/init/initTheme.js';
+import { navbarOn } from './js/menu/navbarOn.js';
+import { planData } from './js/data/planData.js';
+import { initPlan } from './js/init/initPlan.js';
+import { planMove } from './js/plan/planMove.js';
+import { initSubpage } from './js/init/initSubpage.js';
 
-const navigateTo = url => {
-  history.pushState(null, null, url);
-  router();
+
+console.log('planData - ', planData);
+
+document.body.onload = () => {
+  //preloader();
 }
-
-const router = async () => {
-  const routes = [
-    { path: '/src/index.html', view: () => console.log('Viewing Index') },
-    { path: '/src/programm.html', view: () => console.log('Viewing Programm') },
-    { path: '/src/plan.html', view: () => console.log('Viewing Plan') },
-    { path: '/src/stats.html', view: () => console.log('Viewing Stats') },
-    { path: '/src/settings.html', view: () => console.log('Viewing Settings') },
-  ];
-
-  const potentialMatches = routes.map(route => {
-    return {
-      route: route,
-      isMatch: location.pathname === route.path
-    }
-  });
-  let match = potentialMatches.find(potentialMatches => potentialMatches.isMatch)
-  if (!match) {
-    match = {
-      route: routes[0],
-      isMatch: true,
-    }
-  }
-  console.log('111', match.route.view());
-}
-
-window.addEventListener('popstate', router);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.addEventListener('click', e => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault();
-      navigateTo(e.target.href)
+  initTheme();
+  navbarOn();
+  initSubpage();
+
+  setTimeout(() => {
+    if (location.hash === '#plan') {
+      initPlan();
+      planMove();
     }
-  })
-  router()
+  }, 100)
 })
+
+const container = document.getElementById('app');
+const navbar = document.querySelector('.navbar-nav');
+let count = 0;
+
+
+function locationHashChanged( e ) {
+
+  if ( location.hash === "#stats" ) {
+    container.innerHTML = ''
+      const docs = document.createElement('p');
+      
+      container.append(docs);
+      docs.textContent = 'as'
+  };
+  
+  setTimeout(() => {
+    if (location.hash === '#plan') {
+      initPlan();
+      planMove();
+    }
+  }, 1000);
+
+  initSubpage();
+}
+
+window.onhashchange = locationHashChanged;

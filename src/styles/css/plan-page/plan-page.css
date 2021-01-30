@@ -1,0 +1,28 @@
+.plan-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 50px 20px;
+}
+
+.plan-wrapper {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+}
+
+@media(max-width: 991px) {
+  .plan-page {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media(max-width: 767px) {
+  .plan-page {
+    padding: 10px 0 10px;
+  }
+}
+
+

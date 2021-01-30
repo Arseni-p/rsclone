@@ -1,14 +1,18 @@
-.container-xl	 {
-  border: 1px dashed red;
+@import '../common/colors.css';
+
+
+.container-xxl	 {
+
 }
 
 .navbar {
   padding: 0;
-  background-color: transparent;
+  background-color: var(--blackOpacity);
 }
 
 .navbar .header-navbar {
-  padding: 5px 15px;
+  padding: 0px 15px;
+  height: 50px;
 }
 
 .navbar-nav {
@@ -17,11 +21,167 @@
 
 .nav-link,
 .navbar-brand {
+  padding: 0 5px;
   text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1rem;
+  height: 100%;
+  line-height: 50px;
+}
+
+.subpage {
+  display: none;
+}
+
+.nav-link {
+  margin-right: 30px;
+}
+
+.nav-item:last-child .nav-link {
+  margin: 0;
 }
 
 .navbar-brand {
-  padding-left: 30px;
-  background: url(../../../assets/images/common/app-icon.png) no-repeat 0 center;
-  background-size: 25px auto;
+  /*padding-left: 40px;*/
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand-logo {
+  margin-right: 10px;
+  width: 25px;
+  height: 100%;
+  background: url('../../../assets/images/common/app-icon-sprite.png') no-repeat 5px center;
+  background-size: 75px auto;
+  background-position: 0 center;
+}
+
+.navbar-brand:hover .navbar-brand-logo {
+  background-position-x: -25px;
+}
+.navbar-brand.active .navbar-brand-logo {
+  background-position-x: -50px;
+}
+
+.navbar-brand.active:hover .navbar-brand-logo {
+  background-position-x: 0;
+}
+
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-brand:focus:hover,
+.navbar-light .navbar-nav .nav-link:focus:hover {
+  color:rgba(0,0,0,0.9)
+}
+
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-nav .nav-link:focus {
+  color: white;
+}
+
+.navbar-light .navbar-brand.active:hover,
+.navbar-light .navbar-nav .nav-item .nav-link.active:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.navbar-brand:hover,
+.nav-link:hover { 
+  background-color: white;
+  transition: background-color 0.2s linear;
+}
+
+.navbar-light .navbar-brand.active,
+.navbar-light .navbar-nav .nav-item .nav-link.active {
+  font-weight: bold;
+  color: var(--yellow-text);
+}
+
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+}
+
+.navbar-light .navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+.navbar-light .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-light .navbar-toggler:active {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color:  rgba(255, 255, 255, 0.5);
+}
+
+
+@media (max-width: 991px) {
+  .navbar .header-navbar {
+    padding-left: 0;
+  }
+
+  .subpage {
+    display: inline-block;
+    margin-right: auto;
+    color: var(--yellow-active);
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .collapse.navbar-collapse {
+    height: 0;
+  }
+
+  @keyframes menuOn {
+    from {height: 0};
+    top {height: 200px}
+  }
+
+  @keyframes menuOff {
+    from {height: 200px};
+    top {height: 0}
+  }
+
+  .navbar-collapse.menu-off,
+  .navbar-collapse.menu-on {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;    
+    background-color: var(--blackOpacity);
+    overflow: hidden;
+    z-index: 30;
+  }
+
+  .navbar-collapse.menu-off {
+    height: 0;
+    animation: menuOff 0.3s ease-in;
+  }
+
+  .navbar-collapse {
+    z-index: 10;
+  }
+
+  .navbar-collapse.menu-on {
+    height: 200px;
+    animation: menuOn 0.5s ease-out;
+  }
+
+  .navbar-brand,
+  .navbar-collapse .nav-link {
+    padding-left: 20px;
+    margin-right: 0;
+  }
+
+  .navbar-toggler-icon:hover {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='black' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .navbar-toggler-icon:active {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
 }

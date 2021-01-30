@@ -1,6 +1,7 @@
 @import 'fonts.css';
 @import 'colors.css';
 
+
 * {
   margin: 0;
   padding: 0;
@@ -13,17 +14,35 @@ html {
 
 body {
   font-family: 'Raleway', 'Arial Narrow', Arial, sans-serif;
-  min-height: 735px;
-  height: 100vh;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
 }
 
-h4 {
-  font-size: 0.8rem;
+body::-webkit-scrollbar {
+  width: 4px; /* ширина для вертикального скролла */
+  height: 4px; /* высота для горизонтального скролла */
+}
+
+body::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
 }
 
 ul,
 ol {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -41,6 +60,17 @@ button:hover {
   cursor: pointer;
 }
 
-.page-title {
-  text-transform: uppercase;
+button:active {
+  outline: none;
+  transform: scale(0.9);
 }
+
+.btn.btn-outline-light:focus {
+  box-shadow: none;
+}
+
+.btn.btn-outline-light:active {
+  transform: scale(0.9);
+}
+
+
