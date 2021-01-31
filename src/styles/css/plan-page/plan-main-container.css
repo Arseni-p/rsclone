@@ -95,12 +95,16 @@
   z-index: 1;
 }
 
-.plan-item:nth-child(even) .image-wrapper {
+.plan-item:nth-child(3n+1) .image-wrapper {
   background-image: url('../../../assets/images/plan/plank/plank-preview1.jpg');
 }
 
-.plan-item:nth-child(odd) .image-wrapper {
+.plan-item:nth-child(3n + 2) .image-wrapper {
   background-image: url('../../../assets/images/plan/plank/plank-preview2.jpg');
+}
+
+.plan-item:nth-child(3n + 3) .image-wrapper {
+  background-image: url('../../../assets/images/plan/plank/plank-preview3.jpg');
 }
 
 .image-wrapper::before,

@@ -1,3 +1,5 @@
+import { planDayView } from './planDayView.js';
+
 export const planMove = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
@@ -44,6 +46,9 @@ export const planMove = () => {
     movePlanX(moveLeftBtn, moveRightBtn);
   })
   
+  let arrForIndex = [];
+  planItems.forEach(item => { arrForIndex.push(item) })
+  planDayView(planList, arrForIndex);
   
 
 }

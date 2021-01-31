@@ -4,7 +4,12 @@ import { planData } from '../data/planData.js';
 export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
-  const planWrapper = document.querySelector('.plan-wrapper')
+  const planWrapper = document.querySelector('.plan-wrapper');
+  while (!planWrapper) {
+    console.log('reload', planWrapper)
+    planWrapper = document.querySelector('.plan-wrapper');
+    document.location.reload();
+  }
   const planListWrapper = createElement('div', planWrapper, 'plan-list-wrapper');
   const planList = createElement('ul', planListWrapper, 'plan-list');
   const trainCount = 0;
