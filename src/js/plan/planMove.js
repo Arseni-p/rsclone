@@ -49,8 +49,8 @@ export const planMove = () => {
   let arrForIndex = [];
   planItems.forEach(item => { arrForIndex.push(item) })
   planDayView(planList, arrForIndex);
-  
-
+  const btnPrePage = document.querySelector('.btn-prepage');
+  console.log(btnPrePage)
 }
 
 export default planMove;

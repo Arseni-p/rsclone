@@ -107,6 +107,17 @@
   background-image: url('../../../assets/images/plan/plank/plank-preview3.jpg');
 }
 
+
+.plan-item .image-wrapper.relax-day {
+  background-image:  url('../../../assets/images/common/icon-coffe.png'), radial-gradient(circle at center, transparent 30px, transparent 50px);
+  background-size: 40% auto;
+  background-position: center center;
+}
+
+.plan-item:hover .image-wrapper.relax-day {
+  background-image:  url('../../../assets/images/common/icon-coffe.png'), radial-gradient(circle at center, white 40px, transparent 60px);
+}
+
 .image-wrapper::before,
 .image-wrapper::after {
   content: '';
@@ -129,7 +140,6 @@
 .plan-item:hover .image-wrapper::before {
   top: -30px;
   background: linear-gradient(to bottom, var(--preloader-bg) 30px, transparent);
-
 }
 
 .plan-item:hover .image-wrapper::after {

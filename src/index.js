@@ -6,6 +6,8 @@ import { planData } from './js/data/planData.js';
 import { initPlan } from './js/init/initPlan.js';
 import { planMove } from './js/plan/planMove.js';
 import { initSubpage } from './js/init/initSubpage.js';
+import { btnBackPlanday } from './js/plan/planDayView.js';
+import { startWorkout } from './js/plan/planDayView.js';
 
 
 console.log('planData - ', planData);
@@ -53,3 +55,19 @@ function locationHashChanged( e ) {
 }
 
 window.onhashchange = locationHashChanged;
+
+
+document.addEventListener('click', (event) => {
+  const btnPrePage = event.target.closest('.btn-prepage');
+  const startBtn = event.target.closest('.start-btn');
+  const planDayWrapper = document.querySelector('.planday-wrapper');
+
+  if (btnPrePage) {
+    const planDayBlackout = document.querySelector('.planday-blackout')
+    btnBackPlanday(planDayWrapper, planDayBlackout);
+  }
+
+  if (startBtn) {
+    startWorkout(planDayWrapper)
+  }
+})

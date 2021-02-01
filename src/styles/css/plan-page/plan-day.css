@@ -3,15 +3,25 @@
   to {left: 0}
 }
 
+@keyframes moveBgOff {
+  from {left: 0}
+  to {left: -101%}
+}
+
 @keyframes movePlanOn {
-  0% {top: -101%};
-  80% {top: -101%};
-  100% {top: 0}
+  0% {top: -200%};
+  100% {top: 0};
+}
+
+@keyframes movePlanOff {
+  0% {top: 0};
+  100% {top: -200%}
 }
 
 .planday-blackout {
+  display: none;
   position: fixed;
-  left: 0;
+  left: -101%;
   top: 0;
   bottom: 0;
   right: 0;
@@ -19,26 +29,47 @@
   height: 100%;
   background-color: var(--preloader-bg);
   z-index: 99;
-  animation: moveBgOn 0.5s ease-in-out;
+}
+
+.planday-blackout-on {
+  display: block;
+  left: 0;
+  animation: moveBgOn 0.7s ease-in-out;
+}
+
+.planday-blackout-off {
+  display: block;
+  left: -101%;
+  animation: moveBgOff 0.5s ease-in;
 }
 
 .planday-wrapper {
   position: absolute;
   left: 0;
-  top: 0;
+  top: -200%;
+  display: none;
   width: 100%;
   min-height: 700px;
   padding: 0 20px;
-  border: 1px dashed red;
-  animation: movePlanOn 1.5s ease-in-out ;
   z-index: 100;
 }
 
+.planday-wrapper-on {
+  display: block;
+  top: 0;
+  animation: movePlanOn 0.7s ease-in-out;
+}
+
+.planday-wrapper-off {
+  display: block;
+  top: -200%;
+  animation: movePlanOff 0.5s ease-in;
+}
+
 .planday-content {
-  position: relative;
   min-width: 280px;
   max-width: 700px;
-  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   background-color: white;
 }
@@ -136,56 +167,115 @@
 }
 
 .planday-list-wrapper {
-  padding: 5px 10px 50px;
+  padding: 15px 10px;
 }
 
 .planday-list {
   max-width: 567px;
   margin: 0 auto;
-  border: 1px dashed black;
-}
-
-.planday-list * {
-  border: 1px dashed red;
-}
-
-.planday-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .planday-item {
+  height: 80px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.planday-item:last-child {
+  margin-bottom: 0;
+}
+
+.planday-item:hover {
+  border-color: lightgrey;
+  box-shadow: 0 0 10px 0 lightgrey;
+  transition: border-color 0.2s ease-in, box-shadow 0.2s ease-in;
+}
+
+.planday-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 100px);
+  height: 100%;
+  padding: 10px 0 10px 10px;
+}
+
+.planday-item-time {
+  margin: 0;
+}
+
+.planday-item-name {
+  font-size: 0.9rem;
+}
+
+.planday-item-name,
+.planday-item-min,
+.planday-item-sec {
+  margin: 0;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.planday-item-name {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.planday-item-wrapper {
   display: flex;
   justify-content: space-between;
-  height: 80px;
-  margin-bottom: 5px;
-  border-bottom: 1 px solid lightgray;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.planday-item-wrapper:hover {
+  cursor: pointer;
 }
 
 .planday-item-image {
   width: 80px;
   height: 100%;
-  background-image: url('../../../assets/images/plan/plank/plank.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain
+  background-size: contain;
 }
 
 .planday-item-image:hover {
   background-color: var(--preloader-bg);
   cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 4px;
   transition: background-color 0.4s ease-in, border-color 0.4s linear;
 }
 
 .planday-item-image:active {
   background-color: transparent;
   border-color: var(--preloader-bg);
-  transition: background-color 0.3s ease-in, border-color 0.3s linear;
+  transition: background-color 0.1s ease-in;
 }
 
+.start-btn {
+  display: block;
+  margin: 0 auto 15px;
+  width: 80%;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background-color: var(--preloader-bg);
+  border: 1px solid transparent;
+}
+
+.start-btn:hover {
+  border-color: var(--preloader-bg);
+  transition: border-color 0.2s linear;
+}
+
+.relax-signal:hover {
+  cursor: default;
+}
 
 @media (max-width: 767px) {
   .planday-header {
@@ -204,5 +294,26 @@
 @media (max-width: 575px) {
   .planday-header {
     height: 150px;
+  }
+
+  .planday-item {
+    height: 70px;
+  }
+
+  .planday-item-text {
+    width: calc(100% - 80px);
+  }
+
+  .planday-item-image {
+    width: 70px;
+  }
+
+  .planday-item-name {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .planday-item-time {
+    font-size: 0.9rem;
   }
 }

@@ -4,7 +4,7 @@ import { planData } from '../data/planData.js';
 export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
-  const planWrapper = document.querySelector('.plan-wrapper');
+  let planWrapper = document.querySelector('.plan-wrapper');
   while (!planWrapper) {
     console.log('reload', planWrapper)
     planWrapper = document.querySelector('.plan-wrapper');
@@ -20,6 +20,7 @@ export const initPlan = () => {
   const planArray = planData[currProgram][0];
   const rest = 20;
   const hour = 60;
+  const relaxDay = 'relaxation';
 
   for (let i = 1; i <= totalDays; i++) {
     let workoutTime = 0;
@@ -46,6 +47,13 @@ export const initPlan = () => {
     preTrainBtn.classList.add('btn');
     preTrainBtn.classList.add('btn-outline-light');
 
+    //console.log('!!!!', planArray[i-1][0].name)
+    if (planArray[i-1][0].name === relaxDay) {
+      itemCountWrapper.innerHTML =`let's rest today`;
+      preTrainBtn.textContent = `you need a rest`;
+      imageWrapper.classList.add('relax-day');
+      planItem.classList.add('relax-item');
+    }
     
     if (i === parseInt(planData.currDay)) {
       planItem.classList.add('current-day');
