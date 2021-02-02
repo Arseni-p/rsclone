@@ -3,20 +3,17 @@ import { createElement } from '../data/createElement.js';
 import { initBackground } from './initTheme.js';
 
 
-function wrongAlert() {
-  alert('wrong!')
-}
-
 const settings = {
   'gender': '',
   'lang': 'eng',
   'weight': '',
   'height': '',
-  'program': '',
+  'program': 'plank',
   'level': '',
   'sound': 'on',
   'bmi': '',
   'theme': 'dark',
+  'currDay': '1',
 }
 
 export const initApp = () => {

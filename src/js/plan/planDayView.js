@@ -1,6 +1,8 @@
 import { createElement } from '../data/createElement.js';
 import { planData } from '../data/planData.js';
 
+const currRest = 3;
+
 export const planDayView = (planList, arrForIndex) => {
   const mainBody = document.querySelector('.body');
   planList.addEventListener('click', (event) => {
@@ -33,10 +35,11 @@ export const planDayView = (planList, arrForIndex) => {
     const plandayLevelTitle = createElement('p', planDayHeaderWrapper, 'planday-title');
     plandayLevelTitle.innerHTML = `<span class="planday-level">${currSettings.level}</span>&nbsp;&ndash;&nbsp;<span class="planday-day">${planIndex + 1} day</span>`;
     const plandayTiming = createElement('p', planDayHeaderWrapper, 'planday-timing');
-    const currProgram = currSettings.program;
-    const currWorkoutDay = planData[currProgram][0][planIndex];
+    const currLevel = currSettings.level;
+    const levels = ['beginner', 'medium', 'advanced'];
+    const currLevelIndex = levels.indexOf(currLevel);
+    const currWorkoutDay = planData[currLevelIndex][planIndex];
     console.log('planIndex', currWorkoutDay)
-    const currRest = 20;
     const oneMinute = 60;
     let workoutTime = currRest * (currWorkoutDay.length - 1);
     currWorkoutDay.forEach(item => {
@@ -65,6 +68,7 @@ export const planDayView = (planList, arrForIndex) => {
       const plandayItemTime = createElement('p', plandayItemText, 'planday-item-time');
       plandayItemTime.innerHTML = `<span class="planday-item-min">${timeMin}</span>&nbsp;:&nbsp;<span class="planday-item-sec">${timeSec}</span>`;
     }
+    localStorage.setItem('planIndex', planIndex);
    } 
   })
 };
@@ -85,7 +89,136 @@ export const btnBackPlanday = (planDayWrapper, planDayBlackout) => {
 
 export const startWorkout = (planDayWrapper) => {
   console.log('startuem!!!');
-  planDayWrapper.style.display = 'none'
+  const planIndex = localStorage.getItem('planIndex');
+  const localSettings = localStorage.getItem('settings');
+  const currSettings = JSON.parse(localSettings);
+  const currLevel = currSettings.level;
+  const levels = ['beginner', 'medium', 'advanced'];
+  const currLevelIndex = levels.indexOf(currLevel);
+  const currWorkoutDay = planData[currLevelIndex][planIndex];
+  const planDayContent = document.querySelector('.planday-content');
+  planDayContent.classList.add('display-off');
+  let workoutCount = 0;
+  const restTimerTime = currRest * 1000;
+  const currWorkout = createElement('div', planDayWrapper, 'current-workout');
+  let endWorkout = false;
+  let nextWorkoutBtn;
+
+  function initCurrWorkout(currWorkoutDay) {
+    if (endWorkout) {
+      return alert('bingoooo!!!!')
+    }
+    const currWorkoutHeader = createElement('ul', currWorkout, 'header-total-list');
+    for (let i = 0; i < currWorkoutDay.length; i++) {
+      const headerItem = createElement('li', currWorkoutHeader, 'header-total-item');
+      if (i <= workoutCount) {
+        headerItem.classList.add('item-done');
+      }
+    }
+    const exitBtn = createElement('div', currWorkout, 'exit-btn');
+    currWorkout.style.backgroundImage = `url('./assets/images/plan/plank/${currWorkoutDay[workoutCount].image}')`;
+  
+    const timeLineWrapper = createElement('div', currWorkout, 'time-line-wrapper');
+    let timeLine = createElement('div', timeLineWrapper, 'time-line');
+    const pauseBtn = createElement('button', timeLineWrapper, 'pause-btn');
+    nextWorkoutBtn = createElement('button', timeLineWrapper, 'next-workout-btn');
+    const workoutInfo = createElement('div', currWorkout, 'workout-info-wrapper');
+    const workoutTimer = createElement('p', workoutInfo, 'workout-timer-wrapper');
+    const workoutCurrTime = createElement('span', workoutTimer, 'workout-currtime');
+    const workoutTimerSlash = createElement('span', workoutTimer, 'workout-slash');
+    const workoutTotalTime = createElement('span', workoutTimer, 'workout-totaltime');
+    const workoutName = createElement('p', workoutInfo, 'workout-name');
+    workoutTimerSlash.innerHTML = `/`;
+    workoutCurrTime.textContent = currWorkoutDay[workoutCount].time;
+    workoutTotalTime.textContent = currWorkoutDay[workoutCount].time;
+    workoutName.textContent = currWorkoutDay[workoutCount].name;
+    let countdownValue = 3;
+    const countdown = createElement('div', currWorkout, 'workout-countdown');
+    countdown.classList.add('countdown-move');
+    countdown.textContent = countdownValue;
+
+    const preTimerOn = setInterval(() => {
+      countdownValue--;
+      countdown.textContent = countdownValue;
+      if (countdownValue === 0) {
+        clearInterval(preTimerOn);
+      }
+    }, 1000)
+    const preTimer = countdownValue * 1000;
+    const workoutCurrTimer = +(currWorkoutDay[workoutCount].time);
+
+    function currTimerOn(workoutCurrTimer) {
+      let workoutTimerOn = setInterval(() => {
+        workoutCurrTimer--;
+        workoutCurrTime.textContent = workoutCurrTimer;
+        if (workoutCurrTimer === 0 && workoutCount+1 < currWorkoutDay.length) {
+          clearInterval(workoutTimerOn);
+          timeLine.remove();
+          currWorkout.style.backgroundImage = `url('./assets/images/common/icon-coffee.png')`;
+          let restTime = currRest;
+          workoutCurrTime.textContent = currRest;
+          workoutTotalTime.textContent = currRest;
+          workoutName.textContent = 'take a rest';
+          timeLine = createElement('div', timeLineWrapper, 'time-line');
+          setTimeout(() => {
+            timeLine.classList.add('time-line-move');
+            timeLine.style.transition = `width ${currRest}s linear`;
+          }, 100)
+          let restTimer = setInterval(() => {
+            restTime--;
+            workoutCurrTime.textContent = restTime;
+          }, 1000);
+          setTimeout(() => {
+            clearInterval(restTimer);
+            currWorkout.innerHTML = '';
+            workoutCount++;
+            console.log('workoutCount', workoutCount);
+            initCurrWorkout(currWorkoutDay);
+          }, restTimerTime)
+        } 
+        if (workoutCurrTimer === 0 && workoutCount+1 === currWorkoutDay.length) {
+          clearInterval(workoutTimerOn);
+          console.log(workoutCount, 'workoutCount!!!');
+          currWorkout.innerHTML = '';
+          currWorkout.removeAttribute('style')
+        }
+      }, 1000)
+    }
+    setTimeout(() => {
+      const timLine = document.querySelector('.time-line');
+      timeLine.classList.add('time-line-move');
+      timeLine.style.transition = `width ${currWorkoutDay[workoutCount].time}s linear`;
+      countdown.remove();
+      currTimerOn(workoutCurrTimer);
+    }, preTimer);
+  }
+  initCurrWorkout(currWorkoutDay);
+  nextWorkoutBtn.addEventListener('click', () => {
+    const doneIndex = document.querySelectorAll('.item-done').length - 1;
+    const nameContent = document.querySelector('.workout-name').textContent;
+    workoutCount = doneIndex;
+    currWorkout.innerHTML = '';
+    const relaxMessage = 'take a rest';
+    if (nameContent.toLowerCase() === relaxMessage) {
+      workoutCount++;
+      initCurrWorkout(currWorkoutDay);
+    } else {
+      setTimeout(() => {
+        workoutCount++;
+        initCurrWorkout(currWorkoutDay);
+      }, restTimerTime)
+    }
+    console.log('workoutCount', workoutCount);
+    initCurrWorkout(currWorkoutDay);
+  })
+  
+}
+
+export const exitWorkout = () => {
+  const currWorkout = document.querySelector('.current-workout');
+  const planDayContent = document.querySelector('.display-off')
+  currWorkout.remove();
+  planDayContent.classList.remove('display-off');
 }
 
 export default planDayView;

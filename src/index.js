@@ -8,6 +8,7 @@ import { planMove } from './js/plan/planMove.js';
 import { initSubpage } from './js/init/initSubpage.js';
 import { btnBackPlanday } from './js/plan/planDayView.js';
 import { startWorkout } from './js/plan/planDayView.js';
+import { exitWorkout } from './js/plan/planDayView.js';
 
 
 console.log('planData - ', planData);
@@ -60,14 +61,20 @@ window.onhashchange = locationHashChanged;
 document.addEventListener('click', (event) => {
   const btnPrePage = event.target.closest('.btn-prepage');
   const startBtn = event.target.closest('.start-btn');
-  const planDayWrapper = document.querySelector('.planday-wrapper');
+  const exitBtn = event.target.closest('.exit-btn');
 
+  const planDayWrapper = document.querySelector('.planday-wrapper');
+ 
   if (btnPrePage) {
     const planDayBlackout = document.querySelector('.planday-blackout')
     btnBackPlanday(planDayWrapper, planDayBlackout);
   }
 
   if (startBtn) {
-    startWorkout(planDayWrapper)
+    startWorkout(planDayWrapper);
+  }
+
+  if (exitBtn) {
+    exitWorkout();
   }
 })

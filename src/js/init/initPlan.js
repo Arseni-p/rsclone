@@ -5,7 +5,7 @@ export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
   let planWrapper = document.querySelector('.plan-wrapper');
-  while (!planWrapper) {
+  if (!planWrapper) {
     console.log('reload', planWrapper)
     planWrapper = document.querySelector('.plan-wrapper');
     document.location.reload();
@@ -16,8 +16,11 @@ export const initPlan = () => {
   const totalDays = 30;
   const planItemWidth = 300;
   const firstPlanItemWidth = 300;
-  const currProgram = currSettings.program;
-  const planArray = planData[currProgram][0];
+  const currLevel = currSettings.level;
+  const levels = ['beginner', 'medium', 'advanced'];
+  const currLevelIndex = levels.indexOf(currLevel);
+  //console.log(planData[currLevelIndex])
+  const planArray = planData[currLevelIndex];
   const rest = 20;
   const hour = 60;
   const relaxDay = 'relaxation';
@@ -46,24 +49,18 @@ export const initPlan = () => {
     preTrainBtn.textContent = 'go';
     preTrainBtn.classList.add('btn');
     preTrainBtn.classList.add('btn-outline-light');
-
-    //console.log('!!!!', planArray[i-1][0].name)
     if (planArray[i-1][0].name === relaxDay) {
       itemCountWrapper.innerHTML =`let's rest today`;
       preTrainBtn.textContent = `you need a rest`;
       imageWrapper.classList.add('relax-day');
       planItem.classList.add('relax-item');
     }
-    
-    if (i === parseInt(planData.currDay)) {
+    if (i === parseInt(currSettings.currDay)) {
       planItem.classList.add('current-day');
       planItem.classList.add('checked-day-height');
     }
-
-    if (parseInt(planData.currDay) > 1) planItemWidth = 320;
-
-    planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (parseInt(planData.currDay) - 1)}px)`
-   
-     
   }
+
+  if (parseInt(currSettings.currDay) > 1) planItemWidth = 320;
+  planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (parseInt(currSettings.currDay) - 1)}px)`
 }
