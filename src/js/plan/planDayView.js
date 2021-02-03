@@ -1,9 +1,8 @@
 import { createElement } from '../data/createElement.js';
 import { planData } from '../data/planData.js';
 import { initConfetti } from '../init/initConfetti.js';
-import initCongrat from '../init/initCongratulations.js';
+import { initCongrat } from '../init/initCongratulations.js';
 
-const currRest = 3;
 const mainBody = document.querySelector('.body');
 const levels = ['beginner', 'medium', 'advanced'];
 
@@ -13,6 +12,7 @@ export const planDayView = (planList, arrForIndex) => {
   planList.addEventListener('click', (event) => {
     const localSettings = localStorage.getItem('settings');
     const currSettings = JSON.parse(localSettings);
+    const currRest = +(currSettings.rest);
     const workoutDay = event.target.closest('.plan-item');
     const relaxDay = event.target.closest('.relax-item');
     const planIndex = arrForIndex.indexOf(workoutDay);
@@ -62,7 +62,7 @@ export const planDayView = (planList, arrForIndex) => {
       let timeMin = Math.floor(+(currWorkoutDay[i].time) / oneMinute);
       let timeSec = +(currWorkoutDay[i].time) % oneMinute;
       if (timeMin < 10) timeMin = `0${timeMin}`;
-      if (timeSec === 0) timeSec = `0${timeSec}`;
+      if (timeSec === 0 || timeSec < 10) timeSec = `0${timeSec}`;
       const plandayItem = createElement('li', plandayList, 'planday-item');
       const plandayItemWrapper = createElement('div', plandayItem, 'planday-item-wrapper');
       const plandayItemText = createElement('div', plandayItemWrapper, 'planday-item-text');
@@ -93,10 +93,10 @@ export const btnBackPlanday = (planDayWrapper, planDayBlackout) => {
 };
 
 export const startWorkout = (planDayWrapper) => {
-  console.log('startuem!!!');
-  const planIndex = localStorage.getItem('planIndex');
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
+  const planIndex = localStorage.getItem('planIndex');
+  const currRest = +(currSettings.rest);
   const currLevel = currSettings.level;
   const currLevelIndex = levels.indexOf(currLevel);
   const currWorkoutDay = planData[currLevelIndex][planIndex];
@@ -109,9 +109,6 @@ export const startWorkout = (planDayWrapper) => {
   let nextWorkoutBtn;
 
   function initCurrWorkout(currWorkoutDay) {
-    if (endWorkout) {
-      return alert('bingoooo!!!!')
-    }
     const currWorkoutHeader = createElement('ul', currWorkout, 'header-total-list');
     for (let i = 0; i < currWorkoutDay.length; i++) {
       const headerItem = createElement('li', currWorkoutHeader, 'header-total-item');
@@ -149,10 +146,13 @@ export const startWorkout = (planDayWrapper) => {
       }
     }, 1000)
     const preTimer = countdownValue * 1000;
-    const workoutCurrTimer = +(currWorkoutDay[workoutCount].time);
+    let workoutCurrTimer = +(currWorkoutDay[workoutCount].time);
+    let timerOff = false;
 
     function currTimerOn(workoutCurrTimer) {
       let workoutTimerOn = setInterval(() => {
+        if (timerOff) clearInterval(workoutTimerOn);
+        console.log('click interval', timerOff);
         workoutCurrTimer--;
         workoutCurrTime.textContent = workoutCurrTimer;
         if (workoutCurrTimer === 0 && workoutCount+1 < currWorkoutDay.length) {
@@ -182,22 +182,27 @@ export const startWorkout = (planDayWrapper) => {
         } 
         if (workoutCurrTimer === 0 && workoutCount+1 === currWorkoutDay.length) {
           clearInterval(workoutTimerOn);
-          console.log(workoutCount, 'workoutCount!!!');
+          console.log(workoutCount, 'workoutCount!!!', timerOff);
           currWorkout.innerHTML = '';
           currWorkout.removeAttribute('style');
           const canvasArea = createElement('canvas', planDayWrapper, 'canvas-area');
           canvasArea.setAttribute('id', 'canvas');
           let dayNumber = +(currSettings.currDay)
-
           initCongrat(currWorkout, dayNumber, levels);
           dayNumber++;
           currSettings.currDay = dayNumber;
-          console.log(currSettings)
           //localStorage.setItem('settings', JSON.stringify(currSettings));
-          initConfetti();
+          initConfetti()
         }
       }, 1000)
     }
+    
+    exitBtn.addEventListener('click', () => {
+      timerOff = true;
+      workoutCurrTimer = false;
+      console.log('click interval', timerOff);
+    })
+    
     setTimeout(() => {
       const timLine = document.querySelector('.time-line');
       timeLine.classList.add('time-line-move');

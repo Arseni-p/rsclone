@@ -4,6 +4,8 @@ import { planData } from '../data/planData.js';
 export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
+  const levelsBtns = document.querySelectorAll('.level-plan');
+  console.log(levelsBtns)
   let planWrapper = document.querySelector('.plan-wrapper');
   if (!planWrapper) {
     console.log('reload', planWrapper)
@@ -14,11 +16,16 @@ export const initPlan = () => {
   const planList = createElement('ul', planListWrapper, 'plan-list');
   const trainCount = 0;
   const totalDays = 30;
-  const planItemWidth = 300;
+  let planItemWidth = 300;
   const firstPlanItemWidth = 300;
   const currLevel = currSettings.level;
   const levels = ['beginner', 'medium', 'advanced'];
   const currLevelIndex = levels.indexOf(currLevel);
+  const levelsProgress = document.querySelectorAll('.level-progress-on');
+  const daysLeft = document.querySelectorAll('.days-left');
+  levelsBtns[currLevelIndex].classList.add('checked-level');
+  daysLeft[currLevelIndex].textContent = +(daysLeft[currLevelIndex].textContent) - (+(currSettings.currDay) - 1);
+  levelsProgress[currLevelIndex].style.width = `${Math.ceil(+(currSettings.currDay - 1)/totalDays*100)}%`;
   //console.log(planData[currLevelIndex])
   const planArray = planData[currLevelIndex];
   const rest = 20;
@@ -66,5 +73,5 @@ export const initPlan = () => {
   }
 
   if (parseInt(currSettings.currDay) > 1) planItemWidth = 320;
-  planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (parseInt(currSettings.currDay) - 1)}px)`
+  planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (parseInt(currSettings.currDay) - 1)}px)`;
 }

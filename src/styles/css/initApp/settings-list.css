@@ -128,13 +128,13 @@
   transition: background-color 0.2s linear;
 }
 
-.program-choice,
+.relax-choice,
 .level-choice {
   flex-direction: column;
   width: 70%;
 }
 
-.program-btn,
+.relax-btn,
 .level-btn {
   margin: 0;
   margin-bottom: 10px;
@@ -147,12 +147,13 @@
   background-color: var(--settings-black);
 }
 
-.program-btn {
+.relax-btn {
   background-repeat: no-repeat;
   background-size: 30px auto;
   background-position: 95% center;
 }
 
+/*
 .plank-btn {
   background-image: url('../../../assets/images/common/icon-plank.png');
 }
@@ -163,9 +164,9 @@
 
 .yoga-btn {
   background-image: url('../../../assets/images/common/icon-yoga.png');
-}
+}*/
 
-.program-btn:last-child,
+.relax-btn:last-child,
 .level-btn:last-child {
   margin-bottom: 0;
 }

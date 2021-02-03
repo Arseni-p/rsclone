@@ -14,6 +14,7 @@ const settings = {
   'bmi': '',
   'theme': 'dark',
   'currDay': '1',
+  'rest': '',
 }
 
 export const initApp = () => {
@@ -29,15 +30,15 @@ export const initApp = () => {
   const presettingsBtn = document.querySelectorAll('.presettings-btn');
   const presettingsItem = document.querySelectorAll('.presettings-item');
   const backBtn = document.querySelector('.back');  const genderContent = document.querySelector('.gender-content');
-  const programContent = document.querySelector('.program-choice');
+  const relaxContent = document.querySelector('.relax-choice');
   const levelContent = document.querySelector('.level-choice');
   const genderArr = document.querySelectorAll('.gender-btn');
-  const programArr = document.querySelectorAll('.program-input');
+  const relaxArr = document.querySelectorAll('.relax-input');
   const levelArr = document.querySelectorAll('.level-input');
   const weightInput = document.querySelector('.weight-input');
   const heightInput = document.querySelector('.height-input');
   const presettingsWidth = 280;
-  const buttonsArray = ['check-gender', 'check-weight', 'check-height', 'check-program', 'check-start']
+  const buttonsArray = ['check-gender', 'check-weight', 'check-height', 'check-relax', 'check-start']
   let leftMove = 0;
   const presettingsList = document.querySelector('.presettings-list');
   const regNumber = /^[0-9]+$/g;
@@ -53,10 +54,10 @@ export const initApp = () => {
     })
   });
 
-  programContent.addEventListener('click', () => {
-    programArr.forEach(item => { 
+  relaxContent.addEventListener('click', () => {
+    relaxArr.forEach(item => { 
       if (item.checked) {
-        settings.program = item.value;
+        settings.rest = item.value;
         checked = true;
       } 
     })

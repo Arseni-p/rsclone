@@ -1,5 +1,4 @@
 export const initConfetti = () => {
-  console.log('confetti');
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
@@ -25,8 +24,8 @@ export const initConfetti = () => {
 
   //-----------Functions--------------
   const resizeCanvas = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth - 10;
+    canvas.height = window.innerHeight - 10;
     cx = ctx.canvas.width/2;
     cy = ctx.canvas.height/2;
   }

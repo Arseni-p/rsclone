@@ -1,21 +1,26 @@
 import { planDayView } from './planDayView.js';
 
 export const planMove = () => {
-  const localSettings = localStorage.getItem('settings');
-  const currSettings = JSON.parse(localSettings);
+  let localSettings = localStorage.getItem('settings');
+  let currSettings = JSON.parse(localSettings);
+  let posCount = parseInt(currSettings.currDay);
   const planList = document.querySelector('.plan-list');
   const planItems = document.querySelectorAll('.plan-item');
   const planPage = document.querySelector('.plan-page');
   const planLeftBtn = document.querySelector('.pretrain-move-left');
   const planRightBtn = document.querySelector('.pretrain-move-right');
-  let posCount = 1; //parseInt(currSettings.currDay);
+  //let posCount = parseInt(currSettings.currDay);
   const minCount = 1;
   const maxCount = 30;
   const firstMoveX = 300;
   let moveX = 320;
 
   function movePlanX(moveLeftBtn, moveRightBtn) {
-    const checkedDayHeight = document.querySelector('.checked-day-height').classList.remove('checked-day-height');
+    localSettings = localStorage.getItem('settings');
+    currSettings = JSON.parse(localSettings);
+    if (posCount < parseInt(currSettings.currDay)) posCount = parseInt(currSettings.currDay);
+    const checkedDayHeight = document.querySelector('.checked-day-height');
+    if (checkedDayHeight) checkedDayHeight.classList.remove('checked-day-height');
 
     if (moveLeftBtn && (posCount >= minCount && posCount < maxCount)) {
       posCount++;

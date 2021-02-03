@@ -9,10 +9,7 @@ import { initSubpage } from './js/init/initSubpage.js';
 import { btnBackPlanday } from './js/plan/planDayView.js';
 import { startWorkout } from './js/plan/planDayView.js';
 import { exitWorkout } from './js/plan/planDayView.js';
-//import { initConfetti } from './js/views/confetti.js';
-
-
-//initConfetti();
+import { finishPlanDay } from './js/plan/finishPlanDay.js';
 
 document.body.onload = () => {
   //preloader();
@@ -63,12 +60,14 @@ document.addEventListener('click', (event) => {
   const btnPrePage = event.target.closest('.btn-prepage');
   const startBtn = event.target.closest('.start-btn');
   const exitBtn = event.target.closest('.exit-btn');
-  const finishBtn = event.target.closest('.finish-btn');
+  const levelPlan = event.target.closest('.level-plan');
+
+  const finishLine = document.querySelector('.finish-line');
 
   const planDayWrapper = document.querySelector('.planday-wrapper');
- 
+  const planDayBlackout = document.querySelector('.planday-blackout')
+
   if (btnPrePage) {
-    const planDayBlackout = document.querySelector('.planday-blackout')
     btnBackPlanday(planDayWrapper, planDayBlackout);
   }
 
@@ -79,9 +78,32 @@ document.addEventListener('click', (event) => {
   if (exitBtn) {
     exitWorkout();
   }
-    console.log(event)
 
-  if (finishBtn) {
+  if (finishLine) {
+    finishPlanDay(finishLine, planDayWrapper, planDayBlackout);
+  }
+//console.log(event.target);
+  if (levelPlan) {
+    const totalDays = 30;
+    const levelsList = document.querySelectorAll('.level-plan');
+    const lastLevel = document.querySelector('.checked-level');
+    const lastDaysLeft = lastLevel.querySelector('.days-left');
+    const progressLine = lastLevel.querySelector('.level-progress-on');
+    const levelName = levelPlan.querySelector('.levels-name');
+    lastDaysLeft.textContent = totalDays;
+    progressLine.style.width = `0%`;
+    lastLevel.classList.remove('checked-level');
+    levelPlan.classList.add('checked-level');
+    const localSettings = localStorage.getItem('settings');
+    const currSettings = JSON.parse(localSettings);
+    currSettings.currDay = 1;
+    currSettings.level = levelName.textContent.toLowerCase();
+    console.log(currSettings.currDay, currSettings.level)
+    localStorage.setItem('settings', JSON.stringify(currSettings));
+    let planWrapper = document.querySelector('.plan-wrapper');
+    planWrapper.innerHTML = '';
+    initPlan();
+    planMove()
   }
 })
 

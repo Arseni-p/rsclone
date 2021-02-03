@@ -163,30 +163,26 @@
   font-weight: bold;
 }
 
-.done-day {
-  border-color: red;
-}
-
 .checked-day-height {
   height: 98%;
   transition: height 0.3s ease-in 0.3s;
 }
 
-/*
-.plan-list-wrapper::-webkit-scrollbar {
-  height: 8px;
-  background-color: transparent;
+.done-day {
+  border: 4px solid grey;
+  background-color: grey;
 }
 
-.plan-list-wrapper::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 9em;
+.done-day .image-wrapper::before {
+  top: -40px;
+  background-image: linear-gradient(to bottom, grey 40px, transparent);
 }
 
-.plan-list-wrapper:hover::-webkit-scrollbar-thumb {
-  background-color: var(--yellow-active);
+.done-day .image-wrapper::after {
+  bottom: -40px;
+  background-image: linear-gradient(to top,  grey 40px, transparent);
 }
-*/
+
 .plan-pretrain-btn {
   position: absolute;
   top: calc(50% + 50px - 15px);

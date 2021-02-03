@@ -245,7 +245,7 @@
 
 .workout-currtime {
   font-size: 2rem;
-  text-align: left;
+  text-align: right;
   font-weight: 900;
   color: var(--bs-blue-light);
   min-width: 50px;

@@ -62,9 +62,10 @@
 
 .level-progress-on {
   margin: 0;
-  width: 10%;
+  width: 0;
   height: 100%;
   background-color: var(--yellow-active);
+  transition: width 0.5s linear;
 }
 
 .level-progress-off {
@@ -85,6 +86,7 @@
 .checked-level {
   background-color: var(--whiteOpacity);
   color: var(--black);
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
 }
 
 .checked-level .level-progress-off {
