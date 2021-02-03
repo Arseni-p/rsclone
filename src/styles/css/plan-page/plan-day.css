@@ -277,6 +277,14 @@
   cursor: default;
 }
 
+.canvas-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 200;
+
+}
+
 @media (max-width: 767px) {
   .planday-header {
     height: 180px;

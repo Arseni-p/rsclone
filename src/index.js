@@ -9,9 +9,10 @@ import { initSubpage } from './js/init/initSubpage.js';
 import { btnBackPlanday } from './js/plan/planDayView.js';
 import { startWorkout } from './js/plan/planDayView.js';
 import { exitWorkout } from './js/plan/planDayView.js';
+//import { initConfetti } from './js/views/confetti.js';
 
 
-console.log('planData - ', planData);
+//initConfetti();
 
 document.body.onload = () => {
   //preloader();
@@ -62,6 +63,7 @@ document.addEventListener('click', (event) => {
   const btnPrePage = event.target.closest('.btn-prepage');
   const startBtn = event.target.closest('.start-btn');
   const exitBtn = event.target.closest('.exit-btn');
+  const finishBtn = event.target.closest('.finish-btn');
 
   const planDayWrapper = document.querySelector('.planday-wrapper');
  
@@ -77,4 +79,9 @@ document.addEventListener('click', (event) => {
   if (exitBtn) {
     exitWorkout();
   }
+    console.log(event)
+
+  if (finishBtn) {
+  }
 })
+

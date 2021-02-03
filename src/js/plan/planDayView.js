@@ -1,10 +1,15 @@
 import { createElement } from '../data/createElement.js';
 import { planData } from '../data/planData.js';
+import { initConfetti } from '../init/initConfetti.js';
+import initCongrat from '../init/initCongratulations.js';
 
 const currRest = 3;
+const mainBody = document.querySelector('.body');
+const levels = ['beginner', 'medium', 'advanced'];
+
 
 export const planDayView = (planList, arrForIndex) => {
-  const mainBody = document.querySelector('.body');
+  //const mainBody = document.querySelector('.body');
   planList.addEventListener('click', (event) => {
     const localSettings = localStorage.getItem('settings');
     const currSettings = JSON.parse(localSettings);
@@ -36,7 +41,7 @@ export const planDayView = (planList, arrForIndex) => {
     plandayLevelTitle.innerHTML = `<span class="planday-level">${currSettings.level}</span>&nbsp;&ndash;&nbsp;<span class="planday-day">${planIndex + 1} day</span>`;
     const plandayTiming = createElement('p', planDayHeaderWrapper, 'planday-timing');
     const currLevel = currSettings.level;
-    const levels = ['beginner', 'medium', 'advanced'];
+    //const levels = ['beginner', 'medium', 'advanced'];
     const currLevelIndex = levels.indexOf(currLevel);
     const currWorkoutDay = planData[currLevelIndex][planIndex];
     console.log('planIndex', currWorkoutDay)
@@ -93,7 +98,6 @@ export const startWorkout = (planDayWrapper) => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
   const currLevel = currSettings.level;
-  const levels = ['beginner', 'medium', 'advanced'];
   const currLevelIndex = levels.indexOf(currLevel);
   const currWorkoutDay = planData[currLevelIndex][planIndex];
   const planDayContent = document.querySelector('.planday-content');
@@ -180,7 +184,17 @@ export const startWorkout = (planDayWrapper) => {
           clearInterval(workoutTimerOn);
           console.log(workoutCount, 'workoutCount!!!');
           currWorkout.innerHTML = '';
-          currWorkout.removeAttribute('style')
+          currWorkout.removeAttribute('style');
+          const canvasArea = createElement('canvas', planDayWrapper, 'canvas-area');
+          canvasArea.setAttribute('id', 'canvas');
+          let dayNumber = +(currSettings.currDay)
+
+          initCongrat(currWorkout, dayNumber, levels);
+          dayNumber++;
+          currSettings.currDay = dayNumber;
+          console.log(currSettings)
+          //localStorage.setItem('settings', JSON.stringify(currSettings));
+          initConfetti();
         }
       }, 1000)
     }
@@ -193,6 +207,9 @@ export const startWorkout = (planDayWrapper) => {
     }, preTimer);
   }
   initCurrWorkout(currWorkoutDay);
+
+
+
   nextWorkoutBtn.addEventListener('click', () => {
     const doneIndex = document.querySelectorAll('.item-done').length - 1;
     const nameContent = document.querySelector('.workout-name').textContent;

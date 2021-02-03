@@ -59,6 +59,10 @@ export const initPlan = () => {
       planItem.classList.add('current-day');
       planItem.classList.add('checked-day-height');
     }
+    if (i < parseInt(currSettings.currDay)) {
+      planItem.classList.add('done-day');
+      preTrainBtn.textContent = 'complete';
+    }
   }
 
   if (parseInt(currSettings.currDay) > 1) planItemWidth = 320;

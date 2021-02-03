@@ -161,7 +161,10 @@
 
 .current-day .item-title {
   font-weight: bold;
-  
+}
+
+.done-day {
+  border-color: red;
 }
 
 .checked-day-height {
