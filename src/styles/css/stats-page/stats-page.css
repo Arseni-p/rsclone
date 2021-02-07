@@ -1,0 +1,284 @@
+.stats-wrapper {
+  min-width: 300px;
+  max-width: 800px;
+  width: 800px;
+  height: auto;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+
+.stats-workout-wrapper {
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+
+.stats-workout-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-workout-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  width: 33%;
+  border-right: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+}
+
+.stats-workout-item:last-child {
+  border: none;
+}
+
+.stats-workout-value,
+.stats-workout-text {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.stats-workout-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stats-workout-text {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.stats-level {
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  padding-left: 10px;
+}
+
+.stats-level-value {
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+
+.stats-dayslist-wrapper {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  overflow-x: scroll;
+  margin-bottom: 40px;
+}
+
+.stats-dayslist-wrapper::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.stats-dayslist-wrapper::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.stats-dayslist-wrapper::-webkit-scrollbar-track {
+  background-color: var(--textOpacity);
+}
+
+.stats-dayslist-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--whiteOpacity);
+  border-radius: 2px;
+}
+
+.stats-dayslist-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: white;
+}
+
+.stats-days-list {
+  width: calc(30*50px);
+  position: absolute;
+  left: 0;
+  top: 10px;
+  display: flex;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.stats-days-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  font-size: 0.8rem;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.stats-days-item:last-child {
+  margin: 0;
+}
+
+.stats-currday {
+  background-color: var(--yellow-active);
+  border-color: var(--yellow-active);
+  color: black;
+  font-weight: bold;
+}
+
+.stats-currday:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 var(--yellow-active);
+  transition: box-shadow 0.2s linear;
+}
+
+.stats-currday:active {
+  transform: scale(0.9);
+}
+
+.stats-doneday {
+  background-color: gray;
+  border-color: grey;
+}
+
+.user-gender {
+  text-transform: uppercase;
+}
+
+.bmi-wrapper {
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0 10px;
+  color: white;
+}
+
+.bmi-title {
+  letter-spacing: 2px;
+}
+
+.bmi-formula {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.bmi-value {
+  font-weight: bold;
+}
+
+.bmi-list {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.bmi-item {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7re8;
+}
+
+.bmi-item:first-child::before {
+  display: none;
+}
+
+.bmi-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  bottom: -15px;
+  font-size: 0.7rem;
+}
+
+.very-low {
+  background-color: var(--bs-teal);
+  width: 3%;
+}
+
+.low {
+  background-color: var(--blue);
+  width: 9%;
+}
+
+.low::before {
+  content: '<16';
+}
+
+.medium {
+  background-color: var(--green);
+  width: 25%;
+}
+
+.medium::before {
+  content: '18.5';
+}
+
+.hight {
+  background-color: var(--yellow-active);
+  width: 19%;
+  color: black;
+}
+
+.hight::before {
+  content: '25';
+}
+
+.very-hight {
+  background-color: var(--bs-warning);
+  width: 19%;
+  color: black;
+}
+
+.very-hight::before {
+  content: '30';
+}
+
+.extra-hight {
+  background-color: var(--redlight);
+  width: 19%;
+}
+
+.extra-hight::before {
+  content: '35>';
+}
+
+.bmi-item::before {
+  color: white;
+}
+
+.bmi-text-value {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+
+@media(max-width: 767px) {
+  .stats-workout-value {
+    font-size: 1.7rem;
+  }
+  
+  .stats-workout-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media(max-width: 575px) {
+  .stats-workout-value {
+    font-size: 1.1rem;
+  }
+  
+  .stats-workout-text {
+    font-size: 0.7rem;
+  }
+}

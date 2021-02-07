@@ -32,7 +32,7 @@ export const initCongrat = (currWorkout, dayNumber, levels) => {
     timeCount += +(item.time)
   });
   const kkalCount = 0.15;
-  const kkalTotal = kkalCount * timeCount;
+  const kkalTotal = (kkalCount * timeCount).toFixed(2);
   let timeMin = Math.floor(timeCount / 60);
   let timeSec = timeCount % 60;
   if (timeMin < 10) timeMin = `0${timeMin}`;
@@ -44,6 +44,17 @@ export const initCongrat = (currWorkout, dayNumber, levels) => {
     const infoItem = createElement('li', infoList, 'congrat-info-item');
     infoItem.innerHTML = `<span class="info-value">${infoArray[i]}</span><span class="info-text">${infoArrayText[i]}</span>`
   }
+
+  let workoutsCurrTotal = +(currSettings.workoutsTotal);
+  let kkalCurrTotal = +(currSettings.kkalTotal);
+  let durTotal = +(currSettings.durTotal);
+  workoutsCurrTotal += workoutTotal;
+  kkalCurrTotal += kkalTotal;
+  durTotal += timeCount;
+  currSettings.workoutsTotal = workoutsCurrTotal;
+  currSettings.kkalTotal = kkalCurrTotal;
+  currSettings.durTotal = timeCount;
+  localStorage.setItem('settings', JSON.stringify(currSettings));
 }
 
 export default initCongrat;

@@ -1,3 +1,4 @@
+@import '../bootstrap/bootstrap.min.css';
 @import 'common/common.css';
 @import 'common/colors.css';
 @import 'preloader/preloader.css';
@@ -14,6 +15,10 @@
 @import 'plan-page/plan-day.css';
 @import 'plan-page/plan-start.css';
 @import 'plan-page/plan-congrat.css';
+@import 'stats-page/stats-page.css';
+@import 'settings/settings.css';
+@import 'contextMenu/context-menu.css';
+
 
 
 

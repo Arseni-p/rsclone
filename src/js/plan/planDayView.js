@@ -18,7 +18,6 @@ export const planDayView = (planList, arrForIndex) => {
     const planIndex = arrForIndex.indexOf(workoutDay);
 
     if (relaxDay) {
-      console.log('relaxDay', relaxDay);
       relaxDay.classList.add('relax-signal');
     }
 
@@ -41,10 +40,8 @@ export const planDayView = (planList, arrForIndex) => {
     plandayLevelTitle.innerHTML = `<span class="planday-level">${currSettings.level}</span>&nbsp;&ndash;&nbsp;<span class="planday-day">${planIndex + 1} day</span>`;
     const plandayTiming = createElement('p', planDayHeaderWrapper, 'planday-timing');
     const currLevel = currSettings.level;
-    //const levels = ['beginner', 'medium', 'advanced'];
     const currLevelIndex = levels.indexOf(currLevel);
     const currWorkoutDay = planData[currLevelIndex][planIndex];
-    console.log('planIndex', currWorkoutDay)
     const oneMinute = 60;
     let workoutTime = currRest * (currWorkoutDay.length - 1);
     currWorkoutDay.forEach(item => {
@@ -152,7 +149,6 @@ export const startWorkout = (planDayWrapper) => {
     function currTimerOn(workoutCurrTimer) {
       let workoutTimerOn = setInterval(() => {
         if (timerOff) clearInterval(workoutTimerOn);
-        console.log('click interval', timerOff);
         workoutCurrTimer--;
         workoutCurrTime.textContent = workoutCurrTimer;
         if (workoutCurrTimer === 0 && workoutCount+1 < currWorkoutDay.length) {
@@ -176,13 +172,11 @@ export const startWorkout = (planDayWrapper) => {
             clearInterval(restTimer);
             currWorkout.innerHTML = '';
             workoutCount++;
-            console.log('workoutCount', workoutCount);
             initCurrWorkout(currWorkoutDay);
           }, restTimerTime)
         } 
         if (workoutCurrTimer === 0 && workoutCount+1 === currWorkoutDay.length) {
           clearInterval(workoutTimerOn);
-          console.log(workoutCount, 'workoutCount!!!', timerOff);
           currWorkout.innerHTML = '';
           currWorkout.removeAttribute('style');
           const canvasArea = createElement('canvas', planDayWrapper, 'canvas-area');
@@ -191,7 +185,6 @@ export const startWorkout = (planDayWrapper) => {
           initCongrat(currWorkout, dayNumber, levels);
           dayNumber++;
           currSettings.currDay = dayNumber;
-          //localStorage.setItem('settings', JSON.stringify(currSettings));
           initConfetti()
         }
       }, 1000)
@@ -200,7 +193,6 @@ export const startWorkout = (planDayWrapper) => {
     exitBtn.addEventListener('click', () => {
       timerOff = true;
       workoutCurrTimer = false;
-      console.log('click interval', timerOff);
     })
     
     setTimeout(() => {
@@ -230,7 +222,6 @@ export const startWorkout = (planDayWrapper) => {
         initCurrWorkout(currWorkoutDay);
       }, restTimerTime)
     }
-    console.log('workoutCount', workoutCount);
     initCurrWorkout(currWorkoutDay);
   })
   

@@ -1,6 +1,5 @@
 export const initAudioAPI = () => {
   const ctxAudio = new AudioContext();
-  console.log(ctxAudio)
   let audio;
 
   fetch('./assets/sounds/audioApi.mp3')
@@ -13,7 +12,6 @@ export const initAudioAPI = () => {
   function playback() {
     const playSound = ctxAudio.createBufferSource();
     playSound.buffer = audio;
-    console.log(ctxAudio.currentTime)
     playSound.connect(ctxAudio.destination + 1);
     playSound.start(ctxAudio.currentTime);
     playSound.stop(ctxAudio.currentTime + 1);

@@ -4,11 +4,19 @@ import { planData } from '../data/planData.js';
 export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
+  const plankRecord = document.querySelector('.plank-record');
+  if (isNaN(+(currSettings.bestRecord))) {
+    plankRecord.textContent = currSettings.bestRecord;
+  } else {
+    let recordMin = Math.floor(+(currSettings.bestRecord) / 60);
+    let recordSec = +(currSettings.bestRecord) % 60; 
+    if (recordMin < 10) recordMin = `0${recordMin}`;
+    if (recordSec < 10) recordSec = `0${recordSec}`;
+    plankRecord.textContent = `${recordMin} : ${recordSec}`;
+  }
   const levelsBtns = document.querySelectorAll('.level-plan');
-  console.log(levelsBtns)
   let planWrapper = document.querySelector('.plan-wrapper');
   if (!planWrapper) {
-    console.log('reload', planWrapper)
     planWrapper = document.querySelector('.plan-wrapper');
     document.location.reload();
   }
@@ -26,7 +34,6 @@ export const initPlan = () => {
   levelsBtns[currLevelIndex].classList.add('checked-level');
   daysLeft[currLevelIndex].textContent = +(daysLeft[currLevelIndex].textContent) - (+(currSettings.currDay) - 1);
   levelsProgress[currLevelIndex].style.width = `${Math.ceil(+(currSettings.currDay - 1)/totalDays*100)}%`;
-  //console.log(planData[currLevelIndex])
   const planArray = planData[currLevelIndex];
   const rest = 20;
   const hour = 60;

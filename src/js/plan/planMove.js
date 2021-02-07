@@ -9,7 +9,6 @@ export const planMove = () => {
   const planPage = document.querySelector('.plan-page');
   const planLeftBtn = document.querySelector('.pretrain-move-left');
   const planRightBtn = document.querySelector('.pretrain-move-right');
-  //let posCount = parseInt(currSettings.currDay);
   const minCount = 1;
   const maxCount = 30;
   const firstMoveX = 300;
@@ -24,10 +23,8 @@ export const planMove = () => {
 
     if (moveLeftBtn && (posCount >= minCount && posCount < maxCount)) {
       posCount++;
-      console.log('move left', posCount);
     }
     if (moveRightBtn && (posCount <= maxCount && posCount > minCount)) {
-      console.log('move right');
       posCount--
     }
 

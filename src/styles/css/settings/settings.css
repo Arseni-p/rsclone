@@ -1,0 +1,161 @@
+.blackout-settings {
+  position: fixed;
+  left: -101%;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 1vh;
+  background-color: var(--preloader-bg);
+  opacity: 0;
+  z-index: 99;
+  transition: left 0.5s ease-out 0.5s, opacity 0.5s ease-out 0.5s;
+}
+
+.blackout-settings-on {
+  left: 0;
+  opacity: 0.95;
+  cursor: pointer;
+  transition: left 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.settings-wrapper {
+  position: absolute;
+  left: calc(50% - 150px);
+  top: -150%;
+  width: 300px;
+  padding: 10px 15px;
+  min-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
+  z-index: 100;
+  color: white;
+  transition: top 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.settings-wrapper-on {
+  top: 70px;
+  opacity: 0.8;
+  transition: top 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.settings-item:last-child {
+  margin-bottom: 40px;
+}
+
+.settings-title {
+  width: 30%;
+  margin: 0;
+}
+
+.settings-input {
+  display: flex;
+  justify-content: flex-start;
+  width: 60%;
+  font-size: 0.9rem;
+}
+
+.settings-input label {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.settings-input .radio-btn.level.btn {
+  width: 30px;
+}
+
+.settings-title,
+.level-label,
+.sound-label,
+.lang-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.level-label,
+.sound-label,
+.lang-label {
+  padding: 1px 5px;
+  margin-right: 5px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease-in; 
+}
+
+.level-label:hover,
+.sound-label:hover,
+.lang-label:hover {
+  cursor: pointer;
+}
+
+.level-input:checked + .level-label,
+.sound-input:checked + .sound-label,
+.lang-input:checked + .lang-label {
+  border-color: white;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in;
+}
+
+.reset-btn {
+  width: 70px;
+  height: 40px;
+  text-transform: uppercase;
+  padding: 0;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.question-wrapper {
+  position: absolute;
+  top: -101%;
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 316px;
+  padding: 10px 5px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 110;
+  background-color: var(--preloader-bg);
+  transition: top 0.3s ease-out;
+}
+
+.question-wrapper-on {
+  top: 70px;
+  transition: top 0.7s ease-out;
+}
+
+.question-text {
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.question-btn {
+  width: 60px;
+}
+
+.question-btn-yes {
+  margin-right: 50px;
+}
+
+.settings-submit {
+  border-color: var(--yellow-active);
+  color: var(--yellow-active);
+  font-size: 0.8rem;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  display: block;
+}

@@ -1,11 +1,11 @@
 export const plankBeginner = [
   [//1
-    {'name': 'plank', 'image': 'plank.png', 'time': '2'},
-    {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '2'},
-    {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '2'},
-    {'name': 'side plank on the knees to the left', 'image': 'leftknees-plank.png', 'time': '1'},
-    {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '1'},
-    {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '3'},
+    {'name': 'plank', 'image': 'plank.png', 'time': '1'},//20'},
+    {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '1'},//20'},
+    {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '1'},//20'},
+    {'name': 'side plank on the knees to the left', 'image': 'leftknees-plank.png', 'time': '1'},//0'},
+    {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '1'},//0'},
+    {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '1'},
   ],
   [//2
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '20'},

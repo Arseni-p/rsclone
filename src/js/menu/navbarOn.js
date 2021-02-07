@@ -26,7 +26,6 @@ export const navbarOn = () => {
   
 
   menuItems.forEach(item => {item.classList.remove('active')});
-console.log(location.hash)
   if (location.hash !== '') {
     const index = menuHash.indexOf(location.hash);
     menuItems[index].classList.add('active');
@@ -43,7 +42,6 @@ console.log(location.hash)
       if (navbarList.classList.contains('menu-on')) {
         navbarList.classList.remove('menu-on');
         navbarList.classList.add('menu-off');
-        console.log('click!');
   
         setTimeout(() => {
           navbarList.classList.remove('menu-off')

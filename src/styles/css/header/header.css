@@ -122,12 +122,16 @@
     padding-left: 0;
   }
 
+  .navbar-brand {
+    letter-spacing: 2px;
+  }
+
   .subpage {
     display: inline-block;
     margin-right: auto;
     color: var(--yellow-active);
-    letter-spacing: 2px;
-    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-size: 0.7rem;
     text-transform: uppercase;
   }
 

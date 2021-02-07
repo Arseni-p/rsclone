@@ -15,6 +15,12 @@ const settings = {
   'theme': 'dark',
   'currDay': '1',
   'rest': '',
+  'workoutsTotal': '0',
+  'kkalTotal': '0',
+  'durTotal': '0',
+  'mainBg': 'image-1.jpg',
+  'bestRecord': 'no records',
+  'bestTimer': 'no best timer',
 }
 
 export const initApp = () => {
@@ -113,7 +119,7 @@ export const initApp = () => {
 
     if ( checkHeight && heightInput.value.match(regNumber) && heightInput.value > 0 ) {
       settings.height = heightInput.value;
-      settings.bmi = (+settings.height / (+settings.weight * +settings.weight)).toFixed(2);
+      settings.bmi = (+settings.weight / ((+settings.height/100) * (+settings.height/100))).toFixed(2);
       checked = true;
     }
 
@@ -133,8 +139,6 @@ export const initApp = () => {
         })
       }, 1000);
     };
-
-
 
     if (presettingsBtnNext && checked && presettingsCount < buttonsArray.length - 1) {
       presettingsTitles.forEach(item => { item.classList.remove('wrong-item')});
@@ -170,8 +174,14 @@ export const initApp = () => {
 
   const enterKey = 13;
   window.addEventListener("keydown", (event) => {
-    if (currItem === 2 && weightInput.value.match(regNumber) && weightInput.value > 0 || currItem === 3 && heightInput.value.match(regNumber) && heightInput.value > 0) {
+    if (currItem === 2 && weightInput.value.match(regNumber) && weightInput.value > 0) {
       settings.weight = weightInput.value;
+      checked = true;
+    }
+
+    if (currItem === 3 && heightInput.value.match(regNumber) && heightInput.value > 0) {
+      settings.height = heightInput.value;
+      settings.bmi = (+settings.weight / ((+settings.height/100) * (+settings.height/100))).toFixed(2);
       checked = true;
     }
 
@@ -193,7 +203,6 @@ export const initApp = () => {
     }
 
     if (event.keyCode === enterKey && checked && presettingsCount < buttonsArray.length - 1) {
-      console.log(event.code, checked, presettingsCount, '<', buttonsArray.length - 1);
       presettingsTitles.forEach(item => { item.classList.remove('wrong-item')});
       presettingsBtn.forEach(item => {
         item.classList.remove('wrong-btn-shadow');
@@ -217,8 +226,6 @@ export const initApp = () => {
       localStorage.setItem('settings', JSON.stringify(settings));
       document.location.href = '#main'
     }
-    console.log(event.code, checked, presettingsCount, '<', buttonsArray.length - 1);
-
   })
 
 

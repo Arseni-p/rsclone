@@ -22,9 +22,10 @@ import { initBackground } from '../init/initTheme.js';
     initBackground(currSettings);
 
     var router = new Router([
-      new Route('main', `${gender}/${program}/${lang}/main.html`, true),            
-      new Route('program', `${gender}/${program}/${lang}/program.html`),
-      new Route('plan', `${gender}/${program}/${lang}/plan.html`)
+      new Route('main', `${program}/${lang}/main.html`, true),            
+      new Route('program', `${program}/${lang}/program.html`),
+      new Route('stats', `${program}/${lang}/stats.html`),
+      new Route('plan', `${program}/${lang}/plan.html`)
     ]);
   }
 

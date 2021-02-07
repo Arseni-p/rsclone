@@ -32,7 +32,6 @@ export const finishPlanDay = (finishLine, planDayWrapper, planDayBlackout) => {
     const levels = ['beginner', 'medium', 'advanced'];
     const currLevelIndex = levels.indexOf(currLevel);
     const levelsProgress = document.querySelectorAll('.level-progress-on');
-    console.log(levelsProgress[currLevelIndex]);
     levelsProgress[currLevelIndex].style.width = `${Math.ceil(currDayIndex / totalDays * 100)}%`;
     currDayIndex++;
     daysLeft[currLevelIndex].textContent = +(daysLeft[currLevelIndex].textContent) - 1;

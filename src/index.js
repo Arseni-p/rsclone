@@ -1,8 +1,7 @@
-'use strict';
+
 import { preloader } from './js/preloader/preloader.js';
 import { initTheme } from './js/init/initTheme.js';
 import { navbarOn } from './js/menu/navbarOn.js';
-import { planData } from './js/data/planData.js';
 import { initPlan } from './js/init/initPlan.js';
 import { planMove } from './js/plan/planMove.js';
 import { initSubpage } from './js/init/initSubpage.js';
@@ -10,9 +9,15 @@ import { btnBackPlanday } from './js/plan/planDayView.js';
 import { startWorkout } from './js/plan/planDayView.js';
 import { exitWorkout } from './js/plan/planDayView.js';
 import { finishPlanDay } from './js/plan/finishPlanDay.js';
-
+import { stats } from './js/stats/stats.js';
+import { initSettings } from './js/init/initSettings.js';
+import { contextMenu } from './js/contexMenu/contextMenu.js';
+import { keysDown } from './js/keysDown/keysDown.js';
+import { initActive } from './js/init/initActive.js';
+import { challenges } from './js/challenges/challenge.js';
+ 
 document.body.onload = () => {
-  //preloader();
+  preloader();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (location.hash === '#plan') {
       initPlan();
       planMove();
+    };
+
+    if (location.hash === '#stats') {
+      stats();
+    };
+
+    if (location.hash === '#program') {
+      challenges();
     }
   }, 100)
 })
@@ -34,21 +47,22 @@ let count = 0;
 
 
 function locationHashChanged( e ) {
-
-  if ( location.hash === "#stats" ) {
-    container.innerHTML = ''
-      const docs = document.createElement('p');
-      
-      container.append(docs);
-      docs.textContent = 'as'
-  };
-  
+  initActive();
   setTimeout(() => {
     if (location.hash === '#plan') {
       initPlan();
       planMove();
+    };
+
+    if (location.hash === '#stats') {
+      stats();
+    };
+
+    if (location.hash === '#program') {
+      challenges();
     }
-  }, 1000);
+
+  }, 500);
 
   initSubpage();
 }
@@ -61,6 +75,8 @@ document.addEventListener('click', (event) => {
   const startBtn = event.target.closest('.start-btn');
   const exitBtn = event.target.closest('.exit-btn');
   const levelPlan = event.target.closest('.level-plan');
+  const settingsLink = event.target.closest('.settings-link');
+  const challengeLink = event.target.closest('.challenge-level');
 
   const finishLine = document.querySelector('.finish-line');
 
@@ -82,7 +98,7 @@ document.addEventListener('click', (event) => {
   if (finishLine) {
     finishPlanDay(finishLine, planDayWrapper, planDayBlackout);
   }
-//console.log(event.target);
+
   if (levelPlan) {
     const totalDays = 30;
     const levelsList = document.querySelectorAll('.level-plan');
@@ -105,5 +121,25 @@ document.addEventListener('click', (event) => {
     initPlan();
     planMove()
   }
+
+  if (settingsLink) {
+    initSettings();
+  }
+
+  if (challengeLink) {
+    location.hash = '#program';
+  }
+});
+
+document.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+  const posX = event.clientX;
+  const posY = event.clientY;
+  contextMenu(posX, posY);
+});
+
+window.addEventListener('keydown', () => {
+  const key = event.keyCode;
+  keysDown(key);
 })
 
