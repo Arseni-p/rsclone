@@ -103,7 +103,7 @@ export const initSettings = () => {
 
   const levelsInput = document.querySelectorAll('.level-input');
   const soundsInput = document.querySelectorAll('.sound-input');
-  const langInput = document.querySelectorAll('.lang-input')
+  let langInputArr = document.querySelectorAll('.lang-input')
 
   settingsList.addEventListener('click', (event) => {
     const levelRadioInput = event.target.closest('.level-label');
@@ -123,7 +123,7 @@ export const initSettings = () => {
     };
 
     if (langRadioInput) {
-      langInput.forEach(item => {
+      langInputArr.forEach(item => {
         item.removeAttribute('checked')
       })
     }
@@ -135,7 +135,7 @@ export const initSettings = () => {
     const weightInput = document.querySelector('.weight-setting');
     const restInput = document.querySelector('.rest-setting');
     const soundInput = document.querySelectorAll('.sound-input');
-    const langInput = document.querySelectorAll('.lang-input');
+    langInputArr = document.querySelectorAll('.lang-input');
     
     levelInputs.forEach(item => {
       if (item.checked && currSettings.level !== item.value) {
@@ -154,13 +154,14 @@ export const initSettings = () => {
       if (item.checked) currSettings.sound = item.value;
     });
 
-    langInput.forEach(item => {
+    langInputArr.forEach(item => {
       if (item.checked) currSettings.lang = 'eng';
     });
 
     localStorage.setItem('settings', JSON.stringify(currSettings));
     blackout.classList.remove('blackout-settings-on');
       settingWrapper.classList.remove('settings-wrapper-on');
+      // eslint-disable-next-line no-restricted-globals
       location.hash = 'main';
       setTimeout(() => {
         blackout.remove();

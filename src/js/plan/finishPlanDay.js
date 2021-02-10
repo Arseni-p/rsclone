@@ -1,8 +1,9 @@
-import { btnBackPlanday } from '../plan/planDayView.js';
+import { btnBackPlanday } from "./planDayView.js";
 
 export const finishPlanDay = (finishLine, planDayWrapper, planDayBlackout) => {
   finishLine.classList.add('finish-line-on');
   const lineMoveTime = 5;
+  // eslint-disable-next-line no-param-reassign
   finishLine.style.transition = `width ${lineMoveTime}s ease-in-out`;
   setTimeout(() => {
     btnBackPlanday(planDayWrapper, planDayBlackout);

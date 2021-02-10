@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 
 import { preloader } from './js/preloader/preloader.js';
 import { initTheme } from './js/init/initTheme.js';
@@ -5,9 +6,9 @@ import { navbarOn } from './js/menu/navbarOn.js';
 import { initPlan } from './js/init/initPlan.js';
 import { planMove } from './js/plan/planMove.js';
 import { initSubpage } from './js/init/initSubpage.js';
-import { btnBackPlanday } from './js/plan/planDayView.js';
-import { startWorkout } from './js/plan/planDayView.js';
-import { exitWorkout } from './js/plan/planDayView.js';
+import { btnBackPlanday , startWorkout , exitWorkout } from './js/plan/planDayView.js';
+
+
 import { finishPlanDay } from './js/plan/finishPlanDay.js';
 import { stats } from './js/stats/stats.js';
 import { initSettings } from './js/init/initSettings.js';
@@ -15,6 +16,8 @@ import { contextMenu } from './js/contexMenu/contextMenu.js';
 import { keysDown } from './js/keysDown/keysDown.js';
 import { initActive } from './js/init/initActive.js';
 import { challenges } from './js/challenges/challenge.js';
+// eslint-disable-next-line import/no-unresolved
+import { playSound } from './js/audioApi/audioAPI.js';
  
 document.body.onload = () => {
   preloader();
@@ -41,12 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100)
 })
 
-const container = document.getElementById('app');
-const navbar = document.querySelector('.navbar-nav');
-let count = 0;
-
-
-function locationHashChanged( e ) {
+function locationHashChanged() {
   initActive();
   setTimeout(() => {
     if (location.hash === '#plan') {
@@ -101,6 +99,7 @@ document.addEventListener('click', (event) => {
 
   if (levelPlan) {
     const totalDays = 30;
+    // eslint-disable-next-line no-unused-vars
     const levelsList = document.querySelectorAll('.level-plan');
     const lastLevel = document.querySelector('.checked-level');
     const lastDaysLeft = lastLevel.querySelector('.days-left');
@@ -116,7 +115,7 @@ document.addEventListener('click', (event) => {
     currSettings.level = levelName.textContent.toLowerCase();
     console.log(currSettings.currDay, currSettings.level)
     localStorage.setItem('settings', JSON.stringify(currSettings));
-    let planWrapper = document.querySelector('.plan-wrapper');
+    const planWrapper = document.querySelector('.plan-wrapper');
     planWrapper.innerHTML = '';
     initPlan();
     planMove()
@@ -138,8 +137,15 @@ document.addEventListener('contextmenu', (event) => {
   contextMenu(posX, posY);
 });
 
-window.addEventListener('keydown', () => {
+window.addEventListener('keydown', (event) => {
   const key = event.keyCode;
   keysDown(key);
+})
+
+window.addEventListener('mouseover', (event) => {
+  if (event.target.closest('a') || event.target.closest('.plan-pretrain-btn')) {
+    const playItem = 'a-link';
+    playSound(playItem);
+  }
 })
 

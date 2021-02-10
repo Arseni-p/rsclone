@@ -1,24 +1,24 @@
-export const initAudioAPI = () => {
-  const ctxAudio = new AudioContext();
-  let audio;
-
-  fetch('./assets/sounds/audioApi.mp3')
-    .then(data => data.arrayBuffer())
-    .then(arrayBuffer => ctxAudio.decodeAudioData(arrayBuffer))
-    .then(decodeAudio => {
-      audio = decodeAudio;
-    })
+export const playSound = (playItem) => {
+  const localSettings = localStorage.getItem('settings');
+  const currSettings = JSON.parse(localSettings);
+  let soundStatus;
   
-  function playback() {
-    const playSound = ctxAudio.createBufferSource();
-    playSound.buffer = audio;
-    playSound.connect(ctxAudio.destination + 1);
-    playSound.start(ctxAudio.currentTime);
-    playSound.stop(ctxAudio.currentTime + 1);
+  if (currSettings) soundStatus = currSettings.sound;
+  const playSoundOn = new Audio;
+
+  if (soundStatus === 'on') {
+    console.log(`./assets/sounds/${playItem}.mp3`)
+    if ( playSoundOn.canPlayType('audio/mpeg') === 'probably' ) {
+      playSoundOn.src = `./assets/sounds/${playItem}.mp3`;
+    }
+  
+    // eslint-disable-next-line no-inner-declarations
+    function playSoundOnPlay() {
+      playSoundOn.currentTime = 0;
+      playSoundOn.play();
+    }
+  playSoundOnPlay();
   }
-
-  window.addEventListener('mousedown', playback);
-  
 }
 
-export default initAudioAPI;
+export default playSound;

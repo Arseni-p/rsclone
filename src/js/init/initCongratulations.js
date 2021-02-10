@@ -5,7 +5,6 @@ export const initCongrat = (currWorkout, dayNumber, levels) => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
   currWorkout.classList.add('current-workout-congrat');
-  const congratPage = document.querySelector('.planday-wrapper');
   const congratHeader = createElement('div', currWorkout, 'congrat-header');
   const congratDayWrapper = createElement('div', congratHeader, 'congrat-day-wrapper');
   const day = createElement('p', congratDayWrapper, 'congrat-day');
@@ -17,10 +16,12 @@ export const initCongrat = (currWorkout, dayNumber, levels) => {
     cupImage.classList.add('cup-image-on');
     congratDayWrapper.classList.add('congrat-day-wrapper-on')
   }, 10) 
+  // eslint-disable-next-line no-unused-vars
   const congratImage = createElement('div', currWorkout, 'congrat-image');
   const congratInfo = createElement('div', currWorkout, 'congrat-info-wrapper');
   const infoList = createElement('ul', congratInfo, 'congrat-info-list');
   const finishLineWrapper = createElement('div', currWorkout, 'finish-line-wrapper');
+  // eslint-disable-next-line no-unused-vars
   const finishLine = createElement('div', finishLineWrapper, 'finish-line');
   const planIndex = localStorage.getItem('planIndex');
   const currLevel = currSettings.level;
@@ -48,8 +49,9 @@ export const initCongrat = (currWorkout, dayNumber, levels) => {
   let workoutsCurrTotal = +(currSettings.workoutsTotal);
   let kkalCurrTotal = +(currSettings.kkalTotal);
   let durTotal = +(currSettings.durTotal);
-  workoutsCurrTotal += workoutTotal;
-  kkalCurrTotal += kkalTotal;
+  workoutsCurrTotal += +(workoutTotal);
+  kkalCurrTotal += +(kkalTotal);
+  // eslint-disable-next-line no-unused-vars
   durTotal += timeCount;
   currSettings.workoutsTotal = workoutsCurrTotal;
   currSettings.kkalTotal = kkalCurrTotal;

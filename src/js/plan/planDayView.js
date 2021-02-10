@@ -2,13 +2,14 @@ import { createElement } from '../data/createElement.js';
 import { planData } from '../data/planData.js';
 import { initConfetti } from '../init/initConfetti.js';
 import { initCongrat } from '../init/initCongratulations.js';
+import { playSound } from '../audioAPI/audioAPI.js';
 
 const mainBody = document.querySelector('.body');
 const levels = ['beginner', 'medium', 'advanced'];
 
 
 export const planDayView = (planList, arrForIndex) => {
-  //const mainBody = document.querySelector('.body');
+  // const mainBody = document.querySelector('.body');
   planList.addEventListener('click', (event) => {
     const localSettings = localStorage.getItem('settings');
     const currSettings = JSON.parse(localSettings);
@@ -33,6 +34,7 @@ export const planDayView = (planList, arrForIndex) => {
     const planDayContent = createElement('div', planDayWrapper, 'planday-content');
     const planDayHeader = createElement('div', planDayContent, 'planday-header');
     const planDayHeaderWrapper = createElement('div', planDayHeader, 'planday-header-wrapper');
+    // eslint-disable-next-line no-unused-vars
     const btnPrePage = createElement('div', planDayHeaderWrapper, 'btn-prepage');
     const plandayLevelRate = createElement('p', planDayHeaderWrapper, 'plan-header-level levels-rate');
     plandayLevelRate.classList.add(`${currSettings.level}-rate`);
@@ -100,11 +102,10 @@ export const startWorkout = (planDayWrapper) => {
   const planDayContent = document.querySelector('.planday-content');
   planDayContent.classList.add('display-off');
   let workoutCount = 0;
-  const restTimerTime = currRest * 1000;
   const currWorkout = createElement('div', planDayWrapper, 'current-workout');
-  let endWorkout = false;
   let nextWorkoutBtn;
 
+  // eslint-disable-next-line no-shadow
   function initCurrWorkout(currWorkoutDay) {
     const currWorkoutHeader = createElement('ul', currWorkout, 'header-total-list');
     for (let i = 0; i < currWorkoutDay.length; i++) {
@@ -118,7 +119,6 @@ export const startWorkout = (planDayWrapper) => {
   
     const timeLineWrapper = createElement('div', currWorkout, 'time-line-wrapper');
     let timeLine = createElement('div', timeLineWrapper, 'time-line');
-    const pauseBtn = createElement('button', timeLineWrapper, 'pause-btn');
     nextWorkoutBtn = createElement('button', timeLineWrapper, 'next-workout-btn');
     const workoutInfo = createElement('div', currWorkout, 'workout-info-wrapper');
     const workoutTimer = createElement('p', workoutInfo, 'workout-timer-wrapper');
@@ -136,24 +136,45 @@ export const startWorkout = (planDayWrapper) => {
     countdown.textContent = countdownValue;
 
     const preTimerOn = setInterval(() => {
+      const timerSounds = ['one', 'two','three']
+      if (countdownValue >= 0 && countdownValue < 4) {
+        const playItem = timerSounds[countdownValue - 1];
+        playSound(playItem)
+      };
       countdownValue--;
       countdown.textContent = countdownValue;
       if (countdownValue === 0) {
         clearInterval(preTimerOn);
       }
-    }, 1000)
+    }, 1000);
     const preTimer = countdownValue * 1000;
     let workoutCurrTimer = +(currWorkoutDay[workoutCount].time);
     let timerOff = false;
 
+    // eslint-disable-next-line no-shadow
     function currTimerOn(workoutCurrTimer) {
-      let workoutTimerOn = setInterval(() => {
+      nextWorkoutBtn.addEventListener('click', () => {
+        // eslint-disable-next-line no-param-reassign
+        workoutCurrTimer = 1;
+      })
+      const workoutTimerOn = setInterval(() => {
         if (timerOff) clearInterval(workoutTimerOn);
+        // eslint-disable-next-line no-param-reassign
         workoutCurrTimer--;
         workoutCurrTime.textContent = workoutCurrTimer;
         if (workoutCurrTimer === 0 && workoutCount+1 < currWorkoutDay.length) {
           clearInterval(workoutTimerOn);
           timeLine.remove();
+          nextWorkoutBtn.classList.add('next-rest-btn');
+          const restOffBtn = document.querySelector('.next-rest-btn');
+          restOffBtn.addEventListener('click', () => {
+            // eslint-disable-next-line no-use-before-define
+            clearInterval(restTimer);
+            currWorkout.innerHTML = '';
+            workoutCount++;
+            restOffBtn.classList.remove('next-rest-btn');
+            initCurrWorkout(currWorkoutDay);
+          });
           currWorkout.style.backgroundImage = `url('./assets/images/common/icon-coffee.png')`;
           let restTime = currRest;
           workoutCurrTime.textContent = currRest;
@@ -164,16 +185,17 @@ export const startWorkout = (planDayWrapper) => {
             timeLine.classList.add('time-line-move');
             timeLine.style.transition = `width ${currRest}s linear`;
           }, 100)
-          let restTimer = setInterval(() => {
+          const restTimer = setInterval(() => {
             restTime--;
             workoutCurrTime.textContent = restTime;
+            if (restTime === 0) {
+              clearInterval(restTimer);
+              currWorkout.innerHTML = '';
+              workoutCount++;
+              restOffBtn.classList.remove('next-rest-btn');
+              initCurrWorkout(currWorkoutDay);
+            }
           }, 1000);
-          setTimeout(() => {
-            clearInterval(restTimer);
-            currWorkout.innerHTML = '';
-            workoutCount++;
-            initCurrWorkout(currWorkoutDay);
-          }, restTimerTime)
         } 
         if (workoutCurrTimer === 0 && workoutCount+1 === currWorkoutDay.length) {
           clearInterval(workoutTimerOn);
@@ -185,18 +207,19 @@ export const startWorkout = (planDayWrapper) => {
           initCongrat(currWorkout, dayNumber, levels);
           dayNumber++;
           currSettings.currDay = dayNumber;
-          initConfetti()
+          const playItem = 'notbad-goodjob';
+          playSound(playItem);
+          initConfetti();
         }
       }, 1000)
     }
-    
+
     exitBtn.addEventListener('click', () => {
       timerOff = true;
       workoutCurrTimer = false;
     })
     
     setTimeout(() => {
-      const timLine = document.querySelector('.time-line');
       timeLine.classList.add('time-line-move');
       timeLine.style.transition = `width ${currWorkoutDay[workoutCount].time}s linear`;
       countdown.remove();
@@ -204,27 +227,6 @@ export const startWorkout = (planDayWrapper) => {
     }, preTimer);
   }
   initCurrWorkout(currWorkoutDay);
-
-
-
-  nextWorkoutBtn.addEventListener('click', () => {
-    const doneIndex = document.querySelectorAll('.item-done').length - 1;
-    const nameContent = document.querySelector('.workout-name').textContent;
-    workoutCount = doneIndex;
-    currWorkout.innerHTML = '';
-    const relaxMessage = 'take a rest';
-    if (nameContent.toLowerCase() === relaxMessage) {
-      workoutCount++;
-      initCurrWorkout(currWorkoutDay);
-    } else {
-      setTimeout(() => {
-        workoutCount++;
-        initCurrWorkout(currWorkoutDay);
-      }, restTimerTime)
-    }
-    initCurrWorkout(currWorkoutDay);
-  })
-  
 }
 
 export const exitWorkout = () => {

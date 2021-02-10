@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 export const initSubpage = () => {
   const pageName = document.querySelector('.subpage');
   const tabletWidth = 991;
@@ -19,4 +20,6 @@ export const initSubpage = () => {
       pageName.innerHTML = '';
     }
   })
-}
+};
+
+export default initSubpage;

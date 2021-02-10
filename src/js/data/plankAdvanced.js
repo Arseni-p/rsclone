@@ -1,5 +1,5 @@
 export const plankAdvanced = [
-  [//1
+  [// 1
     {'name': 'plank', 'image': 'plank.png', 'time': '60'},
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '60'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '60'},
@@ -7,7 +7,7 @@ export const plankAdvanced = [
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//2
+  [// 2
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '60'},
     {'name': 'plank', 'image': 'plank.png', 'time': '60'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '60'},
@@ -15,7 +15,7 @@ export const plankAdvanced = [
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//3
+  [// 3
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '60'},
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'side plank to the left with a raised hand', 'image': 'leftside-uphand-plank.png', 'time': '60'},
@@ -23,7 +23,7 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//4
+  [// 4
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '90'},
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'side plank to the left with a raised hand', 'image': 'leftside-uphand-plank.png', 'time': '60'},
@@ -31,7 +31,7 @@ export const plankAdvanced = [
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//5
+  [// 5
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '60'},
     {'name': 'leftside plank', 'image': 'leftside-plank.png', 'time': '60'},
@@ -39,10 +39,10 @@ export const plankAdvanced = [
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//6
+  [// 6
     {'name': 'relaxation', 'time': '0'}
   ],
-  [//7
+  [// 7
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '90'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '60'},
@@ -50,7 +50,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//8
+  [// 8
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '90'},
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '90'},
@@ -58,7 +58,7 @@ export const plankAdvanced = [
     {'name': 'rightside plank', 'image': 'rightside-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//9
+  [// 9
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '90'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '60'},
@@ -66,7 +66,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//10
+  [// 10
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '90'},
     {'name': 'plank', 'image': 'plank.png', 'time': '120'},
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
@@ -74,7 +74,7 @@ export const plankAdvanced = [
     {'name': 'side plank to the right with raised hand', 'image': 'rightside-uphand-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//11
+  [// 11
     {'name': 'plank', 'image': 'plank.png', 'time': '120'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '60'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '60'},
@@ -82,7 +82,7 @@ export const plankAdvanced = [
     {'name': 'rightside plank', 'image': 'rightside-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//12
+  [// 12
     {'name': 'plank', 'image': 'plank.png', 'time': '130'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '60'},
     {'name': 'side plank on the knees to the left', 'image': 'leftknees-plank.png', 'time': '60'},
@@ -90,10 +90,10 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//13
+  [// 13
     {'name': 'relaxation', 'time': '0'},
   ],
-  [//14
+  [// 14
     {'name': 'plank', 'image': 'plank.png', 'time': '120'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '60'},
     {'name': 'leftside plank', 'image': 'leftside-plank.png', 'time': '60'},
@@ -102,7 +102,7 @@ export const plankAdvanced = [
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '120'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//15
+  [// 15
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '90'},
     {'name': 'plank', 'image': 'plank.png', 'time': '130'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '60'},
@@ -111,7 +111,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//16
+  [// 16
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '90'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '90'},
@@ -120,7 +120,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//17
+  [// 17
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '120'},
     {'name': 'plank', 'image': 'plank.png', 'time': '150'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '90'},
@@ -129,7 +129,7 @@ export const plankAdvanced = [
     {'name': 'left side plank', 'image': 'rightside-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//18
+  [// 18
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '70'},
     {'name': 'side plank to the right with raised hand', 'image': 'rightside-uphand-plank.png', 'time': '70'},
     {'name': 'leftside plank', 'image': 'leftside-plank.png', 'time': '90'},
@@ -138,10 +138,10 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '130'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//19
+  [// 19
     {'name': 'relaxation', 'time': '0'},
   ],
-  [//40
+  [// 40
     {'name': 'plank', 'image': 'plank.png', 'time': '150'},
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '90'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '90'},
@@ -150,7 +150,7 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '130'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//21
+  [// 21
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '120'},
     {'name': 'left side plank', 'image': 'leftside-plank.png', 'time': '70'},
@@ -159,7 +159,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//22
+  [// 22
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '130'},
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '90'},
@@ -167,7 +167,7 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '120'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//23
+  [// 23
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '120'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '120'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '90'},
@@ -176,7 +176,7 @@ export const plankAdvanced = [
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '130'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//24
+  [// 24
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '150'},
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '80'},
@@ -185,7 +185,7 @@ export const plankAdvanced = [
     {'name': 'rightside plank', 'image': 'rightside-plank.png', 'time': '90'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//25
+  [// 25
     {'name': 'side plank to the left with raised hand', 'image': 'leftside-uphand-plank.png', 'time': '120'},
     {'name': 'side plank to the right with raised hand', 'image': 'rightside-uphand-plank.png', 'time': '120'},
     {'name': 'leftside plank', 'image': 'leftside-plank.png', 'time': '80'},
@@ -194,10 +194,10 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//26
+  [// 26
     {'name': 'relaxation', 'time': '60'},
   ],
-  [//27
+  [// 27
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'knee plank', 'image': 'knees-plank.png', 'time': '130'},
     {'name': 'plank on the knees and straight arms', 'image': 'frontknees-plank.png', 'time': '130'},
@@ -207,7 +207,7 @@ export const plankAdvanced = [
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//28
+  [// 28
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '60'},
     {'name': 'plank', 'image': 'plank.png', 'time': '60'},
     {'name': 'leftside plank', 'image': 'leftside-plank.png', 'time': '60'},
@@ -217,7 +217,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '60'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//29
+  [// 29
     {'name': 'plank', 'image': 'plank.png', 'time': '180'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '120'},
     {'name': 'side plank on the knees to the left', 'image': 'leftknees-plank.png', 'time': '120'},
@@ -229,7 +229,7 @@ export const plankAdvanced = [
     {'name': 'reverse plank', 'image': 'reverse-plank.png', 'time': '120'},
     {'name': 'stretching "cobra"', 'image': 'stretching-cobra.png', 'time': '60'},
   ],
-  [//30
+  [// 30
     {'name': 'front plank', 'image': 'front-plank.png', 'time': '180'},
     {'name': 'plank', 'image': 'plank.png', 'time': '160'},
     {'name': 'side plank on the knees to the right', 'image': 'rightknees-plank.png', 'time': '130'},

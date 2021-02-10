@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 export const initActive = () => {
   const navbarBrand = document.querySelector('.navbar-brand');
   const programLink = document.querySelector('.program-link');

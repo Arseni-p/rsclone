@@ -74,6 +74,9 @@ export const stats = () => {
     const planLink = document.querySelector('.plan-link');
     statsActive.classList.remove('active');
     planLink.classList.add('active');
+    // eslint-disable-next-line no-restricted-globals
     location.hash = '#plan'}
   )
 }
+
+export default stats;

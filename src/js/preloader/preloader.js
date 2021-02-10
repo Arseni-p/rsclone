@@ -1,4 +1,4 @@
-'use strict';
+
 
 export const preloader = () => {
   const preloaderItem = document.querySelector('.preloader');
@@ -7,3 +7,5 @@ export const preloader = () => {
     preloaderItem.classList.add('done')
   }, 5000)
 }
+
+export default preloader;

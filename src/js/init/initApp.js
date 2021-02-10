@@ -1,7 +1,5 @@
-'use strict';
-import { createElement } from '../data/createElement.js';
-import { initBackground } from './initTheme.js';
 
+import { initBackground } from './initTheme.js';
 
 const settings = {
   'gender': '',
@@ -78,13 +76,13 @@ export const initApp = () => {
     })
   });
 
-  let opacityOn = () => {
+  const opacityOn = () => {
     opacityValue -= opacityGradation;
     blackoutOpacity.style.opacity = opacityValue;
     return opacityValue;
   }
 
-  let opacityOff = () => {
+  const opacityOff = () => {
     opacityValue += opacityGradation;
     blackoutOpacity.style.opacity = opacityValue;
     return opacityValue;

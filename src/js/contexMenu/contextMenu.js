@@ -5,7 +5,7 @@ const mainBody = document.querySelector('.body');
 export const contextMenu = (posX, posY) => {
   // eslint-disable-next-line no-shadow
   let contextMenuWrapper = document.querySelector('.contextmenu-wrapper');
-  let contextMenuWrapperOn = document.querySelector('.contextmenu-wrapper-on');
+  const contextMenuWrapperOn = document.querySelector('.contextmenu-wrapper-on');
   const bgArray = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg'];
 
   if (contextMenuWrapper && !contextMenuWrapperOn) {
@@ -28,9 +28,9 @@ export const contextMenu = (posX, posY) => {
     bgList.addEventListener('click', (event) => {
       const localSettings = localStorage.getItem('settings');
       const currSettings = JSON.parse(localSettings);
-      const bgList = document.querySelectorAll('.contextmenu-item');
+      const bgListOn = document.querySelectorAll('.contextmenu-item');
       const bgListArray = [];
-      bgList.forEach(item => {
+      bgListOn.forEach(item => {
         bgListArray.push(item);
       })
       const imageIndex = bgListArray.indexOf(event.target);

@@ -5,6 +5,7 @@ export const initPlan = () => {
   const localSettings = localStorage.getItem('settings');
   const currSettings = JSON.parse(localSettings);
   const plankRecord = document.querySelector('.plank-record');
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(+(currSettings.bestRecord))) {
     plankRecord.textContent = currSettings.bestRecord;
   } else {
@@ -22,7 +23,6 @@ export const initPlan = () => {
   }
   const planListWrapper = createElement('div', planWrapper, 'plan-list-wrapper');
   const planList = createElement('ul', planListWrapper, 'plan-list');
-  const trainCount = 0;
   const totalDays = 30;
   let planItemWidth = 300;
   const firstPlanItemWidth = 300;
@@ -69,16 +69,18 @@ export const initPlan = () => {
       imageWrapper.classList.add('relax-day');
       planItem.classList.add('relax-item');
     }
-    if (i === parseInt(currSettings.currDay)) {
+    if (i === +(currSettings.currDay)) {
       planItem.classList.add('current-day');
       planItem.classList.add('checked-day-height');
     }
-    if (i < parseInt(currSettings.currDay)) {
+    if (i < +(currSettings.currDay)) {
       planItem.classList.add('done-day');
-      preTrainBtn.textContent = 'complete';
+      preTrainBtn.textContent = 'done';
     }
   }
 
-  if (parseInt(currSettings.currDay) > 1) planItemWidth = 320;
-  planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (parseInt(currSettings.currDay) - 1)}px)`;
-}
+  if (+(currSettings.currDay) > 1) planItemWidth = 320;
+  planList.style.left = `calc(50% - ${firstPlanItemWidth / 2}px - ${planItemWidth * (+(currSettings.currDay) - 1)}px)`;
+};
+
+export default initPlan;

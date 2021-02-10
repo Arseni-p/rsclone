@@ -1,4 +1,4 @@
-'use strict';
+
 
 export const navbarOn = () => {
   let activeItem;
@@ -26,7 +26,9 @@ export const navbarOn = () => {
   
 
   menuItems.forEach(item => {item.classList.remove('active')});
+  // eslint-disable-next-line no-restricted-globals
   if (location.hash !== '') {
+    // eslint-disable-next-line no-restricted-globals
     const index = menuHash.indexOf(location.hash);
     menuItems[index].classList.add('active');
   } else {
@@ -36,7 +38,7 @@ export const navbarOn = () => {
   navbar.addEventListener('click', (event) => {
     const currItem = event.target.closest('.navbar-item');
     if (currItem && !event.target.classList.contains('active')) {
-      const activeItem = navbar.querySelector('.active');
+      activeItem = navbar.querySelector('.active');
       activeItem.classList.remove('active');
       currItem.classList.add('active');
       if (navbarList.classList.contains('menu-on')) {
@@ -58,4 +60,6 @@ export const navbarOn = () => {
   navbarBtn.addEventListener('click', () => {
     menuOnOff();
   })
-}
+};
+
+export default navbarOn;

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export const initConfetti = () => {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -6,7 +7,7 @@ export const initConfetti = () => {
   let cx = ctx.canvas.width/2;
   let cy = ctx.canvas.height/2;
 
-  let confetti = [];
+  const confetti = [];
   const confettiCount = 300;
   const gravity = 0.5;
   const terminalVelocity = 5;
@@ -25,13 +26,15 @@ export const initConfetti = () => {
   const resizeCanvas = () => {
     canvas.width = window.innerWidth - 10;
     canvas.height = window.innerHeight - 10;
+    // eslint-disable-next-line no-unused-vars
     cx = ctx.canvas.width/2;
+    // eslint-disable-next-line no-unused-vars
     cy = ctx.canvas.height/2;
   }
 
-  let randomRange = (min, max) => Math.random() * (max - min) + min
+  const randomRange = (min, max) => Math.random() * (max - min) + min
 
-  let initConfetti = () => {
+  const initConfettiOn = () => {
     for (let i = 0; i < confettiCount; i++) {
       confetti.push({
         color      : colors[Math.floor(randomRange(0, colors.length))],
@@ -60,8 +63,8 @@ export const initConfetti = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     confetti.forEach((confetto, index) => {
-      let width = (confetto.dimensions.x * confetto.scale.x);
-      let height = (confetto.dimensions.y * confetto.scale.y);
+      const width = (confetto.dimensions.x * confetto.scale.x);
+      const height = (confetto.dimensions.y * confetto.scale.y);
       
       ctx.translate(confetto.position.x, confetto.position.y);
       ctx.rotate(confetto.rotation);
@@ -86,20 +89,20 @@ export const initConfetti = () => {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
     });
 
-    if (confetti.length <= 10) initConfetti();
+    if (confetti.length <= 10) initConfettiOn();
 
     window.requestAnimationFrame(render);
   }
 
-  initConfetti();
+  initConfettiOn();
   render();
 
-  window.addEventListener('resize', function() {
+  window.addEventListener('resize', () => {
     resizeCanvas();
   });
 
-  window.addEventListener('click', function() {
-    initConfetti();
+  window.addEventListener('click', () => {
+    initConfettiOn();
   });
 }
 

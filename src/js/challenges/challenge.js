@@ -4,10 +4,10 @@ export const challenges = () => {
   const recordBtn = document.querySelector('.record-btn');
   const timerBtn = document.querySelector('.timer-btn');
   const bestRecord = document.querySelector('.best-record');
-  const bestTimer = document.querySelector('.best-timer');
   const recordMin = document.querySelector('.record-min');
   const recordSec = document.querySelector('.record-sec');
   const lastRecord = document.querySelector('.last-record');
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(+(currSettings.bestRecord))) {
     bestRecord.textContent = currSettings.bestRecord;
   } else {
@@ -18,7 +18,6 @@ export const challenges = () => {
     bestRecord.textContent = `${lastRecordMin} : ${lastRecordSec}`;
   }
   let recordOn = false;
-  let timerOn = false;
   let currMin = 0;
   let currSec = 0;
 
@@ -33,7 +32,7 @@ export const challenges = () => {
       recordOn = false;
     }
 
-    let recordTime = setInterval(() => {
+    const recordTime = setInterval(() => {
       currSec++;
       if (currSec < 10) currSec = `0${currSec}`;
       if (currSec > 59) {
@@ -53,18 +52,20 @@ export const challenges = () => {
         recordSec.textContent = currSec;
         clearInterval(recordTime);
         lastRecord.textContent = `${currMin} : ${currSec}`;
+        // eslint-disable-next-line no-restricted-globals
         if (isNaN(+(currSettings.bestRecord))) {
           currSettings.bestRecord = `${+(currMin) * 60 + +(currSec)}`;
           localStorage.setItem('settings', JSON.stringify(currSettings));
           localSettings = localStorage.getItem('settings');
           currSettings = JSON.parse(localSettings);
-          lastRecordMin = Math.floor(+(currSettings.bestRecord) / 60);
-          lastRecordSec = +(currSettings.bestRecord) % 60;
+          let lastRecordMin = Math.floor(+(currSettings.bestRecord) / 60);
+          let lastRecordSec = +(currSettings.bestRecord) % 60;
           if (lastRecordMin < 10) lastRecordMin = `0${lastRecordMin}`;
           if (lastRecordSec < 10) lastRecordSec = `0${lastRecordSec}`;
           bestRecord.textContent = `${lastRecordMin} : ${lastRecordSec}`;
         }
 
+        // eslint-disable-next-line no-restricted-globals
         if (!isNaN(+(currSettings.bestRecord))) {
           const totalCurrTime = `${+(currMin) * 60 + +(currSec)}`
           if (+(currSettings.bestRecord) < totalCurrTime) {

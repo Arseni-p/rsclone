@@ -26,6 +26,7 @@ export const resetAllSettings = () => {
     blackoutWrapperOnBtn.classList.remove('blackout-settings-on');
 
     setTimeout(() => {
+      // eslint-disable-next-line no-restricted-globals
       location.hash = '';
       preloader();
       document.location.reload();
@@ -46,16 +47,16 @@ export const resetAllSettings = () => {
   })
 
   document.addEventListener('click', (event) => {
-    const questionWrapper = document.querySelector('.question-wrapper-on')
-    if ( questionWrapper && (
-      event.clientX < questionWrapper.offsetLeft ||
-      event.clientX > questionWrapper.offsetLeft + questionWrapper.offsetWidth ||
-      event.clientY < questionWrapper.offsetTop ||
-      event.clientY > questionWrapper.offsetTop + questionWrapper.offsetHeight 
+    const questionWrapperOn = document.querySelector('.question-wrapper-on')
+    if ( questionWrapperOn && (
+      event.clientX < questionWrapperOn.offsetLeft ||
+      event.clientX > questionWrapperOn.offsetLeft + questionWrapperOn.offsetWidth ||
+      event.clientY < questionWrapperOn.offsetTop ||
+      event.clientY > questionWrapperOn.offsetTop + questionWrapperOn.offsetHeight 
     )) {
-      questionWrapper.classList.remove('question-wrapper-on');
+      questionWrapperOn.classList.remove('question-wrapper-on');
       setTimeout(() => {
-        questionWrapper.remove()
+        questionWrapperOn.remove()
       }, 1000)
     }
   })

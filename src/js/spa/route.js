@@ -3,6 +3,7 @@
 function Route(name, htmlName, defaultRoute) {
     try {
         if(!name || !htmlName) {
+            // eslint-disable-next-line no-throw-literal
             throw 'error: name and htmlName params are mandatories';
         }
         this.constructor(name, htmlName, defaultRoute);
@@ -15,12 +16,12 @@ Route.prototype = {
     name: undefined,
     htmlName: undefined,
     default: undefined,
-    constructor: function (name, htmlName, defaultRoute) {
+    constructor (name, htmlName, defaultRoute) {
         this.name = name;
         this.htmlName = htmlName;
         this.default = defaultRoute;
     },
-    isActiveRoute: function (hashedPath) {
+    isActiveRoute (hashedPath) {
         return hashedPath.replace('#', '') === this.name; 
     }
 }
