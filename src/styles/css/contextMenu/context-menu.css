@@ -1,0 +1,80 @@
+.contextmenu-wrapper {
+  display: none;
+  position: absolute;
+  width: 250px;
+  min-height: 260px;
+  padding: 10px 10px 0;
+  border-radius: 10px;
+  background-color: var(--preloader-bg);
+  box-shadow: 0 0 20px 0 white;
+  opacity: 0;
+  z-index: 400;
+}
+
+.contextmenu-wrapper-on {
+  display: block;
+  opacity: 0.95;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.contextmenu-title {
+  color: white;
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.contextmenu-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 190px;
+  margin: 0 auto;
+}
+
+.contextmenu-item {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5;
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.contextmenu-item:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 white;
+  transform: scale(1.1);
+  opacity: 1;
+  transition: box-shadow 0.4s ease-out, transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.preimage-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  opacity: 0;
+  border: 1px solid red;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+}
+
+@keyframes wrapperOn {
+  from {opacity: 0};
+  to {opacity: 1}
+}
+
+.preimage-wrapper-on {
+  opacity: 1;
+  animation: wrapperOn 1s ease-in-out;
+}

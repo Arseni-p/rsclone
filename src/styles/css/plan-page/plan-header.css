@@ -1,0 +1,200 @@
+
+.levels-list-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.levels-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.levels-item {
+  width: 24%;
+}
+
+.levels-button {
+  padding: 10px 15px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: var(--textOpacity);
+}
+
+.levels-name {
+  width: 120px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: left;
+  width: calc(100% - 40px)
+}
+
+.levels-rate {
+  flex-grow: 1;
+  width: 40px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-size: 12px auto, 12px auto, 12px auto;
+  background-position: 98% center, calc(98% - 12px) center,calc(98% - 24px) center;
+  background-image: 
+  url('../../../assets/images/common/icon-level-on.png'),
+  url('../../../assets/images/common/icon-level-off.png'),
+  url('../../../assets/images/common/icon-level-off.png');
+}
+
+.levels-remainder {
+  margin-bottom: 2px;
+  width: 100%;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+.levels-progress {
+  width: 100%;
+  height: 4px;
+  display: flex;
+}
+
+.level-progress-on {
+  margin: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--yellow-active);
+  transition: width 0.5s linear;
+}
+
+.level-progress-off {
+  width: 0%;
+  flex-grow: 1;
+  background-color: var(--grey);
+}
+
+.levels-progress {
+  border-radius: 40px;
+  overflow-x: hidden;
+}
+
+.records-progress {
+  background-color: transparent;
+}
+
+.checked-level {
+  background-color: var(--whiteOpacity);
+  color: var(--black);
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.checked-level .level-progress-off {
+  background-color: var(--black);
+}
+
+.medium-rate {
+  background-image: 
+    url('../../../assets/images/common/icon-level-on.png'),
+    url('../../../assets/images/common/icon-level-on.png'),
+    url('../../../assets/images/common/icon-level-off.png');
+}
+
+.advanced-rate {
+  background-image: 
+    url('../../../assets/images/common/icon-level-on.png'),
+    url('../../../assets/images/common/icon-level-on.png'),
+    url('../../../assets/images/common/icon-level-on.png');
+}
+
+
+
+@media(max-width: 991px) {
+  .levels-button {
+    padding: 5px 10px;
+  }
+
+  .levels-name {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    width: calc(100% - 35px)
+  }
+
+  .levels-rate {
+    width: 35px;
+    height: 21px;
+    background-size: 10px auto, 10px auto, 10px auto;
+    background-position: 98% center, calc(98% - 10px) center,calc(98% - 20px) center;
+    background-image: 
+    url('../../../assets/images/common/icon-level-on.png'),
+    url('../../../assets/images/common/icon-level-off.png'),
+    url('../../../assets/images/common/icon-level-off.png');
+  }
+
+  .levels-remainder {
+    font-size: 0.7rem;
+  }
+    
+  .medium-rate {
+    background-image: 
+      url('../../../assets/images/common/icon-level-on.png'),
+      url('../../../assets/images/common/icon-level-on.png'),
+      url('../../../assets/images/common/icon-level-off.png');
+  }
+
+  .advanced-rate {
+    background-image: 
+      url('../../../assets/images/common/icon-level-on.png'),
+      url('../../../assets/images/common/icon-level-on.png'),
+      url('../../../assets/images/common/icon-level-on.png');
+  }
+}
+
+@media(max-width: 767px) {
+  .levels-list-wrapper {
+    position: relative;
+    overflow-x: scroll;
+    height: 69px;
+    margin-bottom: 30px;
+  }
+
+  .levels-list-wrapper::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .levels-list-wrapper::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+
+  .levels-list-wrapper::-webkit-scrollbar-track {
+    background-color: var(--textOpacity);
+  }
+
+  .levels-list-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--whiteOpacity);
+    border-radius: 2px;
+  }
+
+  .levels-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: white;
+  }
+
+  .levels-list {
+    position: absolute;
+    left: 25px;
+    top: 0;
+    justify-content: flex-start;
+    width: 1100px;
+    transition: left 0.5s ease-in-out 
+  }
+  
+  .levels-item {
+    width: 250px;
+    margin-right: 25px;
+  }
+
+
+}

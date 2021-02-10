@@ -1,0 +1,82 @@
+@import '../common/colors.css';
+
+.main-page {
+  width: 100%;
+  /*min-height: calc(100vh - 54px); 100%*/
+  padding-top: 30vh;
+  color: white;
+}
+
+.man-plank .text-block {
+  margin-left: 0;
+}
+
+.page-title,
+.page-text {
+  padding: 10px 30px;
+  padding-left: 100px;
+  width: fit-content;
+  max-width: 600px;
+  letter-spacing: 2px;
+  background-color: var(--textOpacity);
+  margin-bottom: 20px;
+}
+
+.page-title {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.page-text {
+  font-size: 0.9rem;
+}
+
+.yellow-part {
+  color: var(--yellow-text)
+}
+
+.main-btns-list {
+  display: flex;
+  padding-left: 100px;
+}
+
+.main-btns-link {
+  width: 110px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: var(--blackOpacity);
+}
+
+.main-btns-link:first-child {
+  margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+  .main-page {
+    padding-top: 150px;
+  }
+
+  .page-title,
+  .page-text {
+    padding-left: 50px;
+    max-width: 500px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-text {
+    font-size: 0.8em;
+  }
+
+  .main-btns-list {
+    padding-left: 50px;
+    margin-bottom: 50px;
+  }
+}

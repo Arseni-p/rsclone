@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout</title>
+  <link rel="shortcut icon" href="/src/assets/images/common/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="styles/css/styles.css">
+
+<!--
+  Delete after install webpack
+  <link rel="stylesheet" href="styles/css/styles.min.css">
+-->
+  
+</head>
+<body class="body">
+  <div class="preloader">
+    <h1 class="preloader-title">
+      <span class="title-letter letter-w">w</span>
+      <span class="title-letter letter-o1">o</span>
+      <span class="title-letter letter-r">r</span>
+      <span class="title-letter letter-k">k</span>
+      <span class="title-letter letter-o2">o</span>
+      <span class="title-letter letter-u">u</span>
+      <span class="title-letter letter-t">t</span>
+    </h1>
+    <div class="loader">
+      <div class="loader-inner loader-one"></div>
+      <div class="loader-inner loader-two"></div>
+      <div class="loader-inner loader-three"></div>
+    </div>
+  </div>
+  <div class="blackout presettings-container">
+    <div class="blackout-opacity"></div>
+    <div class="presettings-wrapper">
+      <p class="text-intro"><span class="back"></span> Let's get acquainted <span class="shy-smile"></span></p>
+      <div class="presettings-list-wrapper">
+        <ul class="presettings-list">
+          <li class="presettings-item">
+            <h3 class="presettings-title">Choose your gender</h3>
+            <div class="presettings-content gender-content">
+              <input class="presetting-input gender-btn visually-hidden" type="radio" id="man" name="gender" value="man"><label for="man" class="radio-btn gender-input man-btn">man</label>
+              <input class="presetting-input gender-btn visually-hidden" type="radio" id="woman" name="gender" value="woman"><label for="woman" class="radio-btn woman-btn">woman</label>
+            </div>
+            <button type="button" class="presettings-btn btn btn-outline-light check-gender">Next</button>
+
+          </li>
+          
+          <li class="presettings-item">
+            <h3 class="presettings-title">Enter your weight</h3>
+            <div class="presettings-content">
+              <input type="text" class="pressetings-input weight-input" placeholder="0 kg">
+            </div>
+            <button type="button" class="presettings-btn btn btn-outline-light check-weight">Next</button>
+          </li>
+          
+          <li class="presettings-item">
+            <h3 class="presettings-title">enter your height</h3>
+            <div class="presettings-content">
+              <input type="text" class="pressetings-input height-input" placeholder="0 cm">
+            </div>
+            <button type="button" class="presettings-btn btn btn-outline-light check-height">Next</button>
+
+          </li>
+          
+          <li class="presettings-item">
+            <h3 class="presettings-title">Choose your relax-time</h3>
+            <div class="presettings-content relax-choice">
+              <input class="presetting-input relax-input visually-hidden" type="radio" id="plank" name="relax" value="10"><label for="plank" class="radio-btn relax-btn">10 sec</label>
+              <input class="presetting-input relax-input visually-hidden" type="radio" id="run" name="relax" value="20"><label for="run" class="radio-btn relax-btn">20 Sec</label>
+              <input class="presetting-input relax-input visually-hidden" type="radio" id="yoga" name="relax" value="30"><label for="yoga" class="radio-btn relax-btn">30 Sec</label>
+            </div>
+            <button type="button" class="presettings-btn btn btn-outline-light check-relax">Next</button>
+
+          </li>
+          
+          <li class="presettings-item">
+            <h3 class="presettings-title">Choose your level</h3>
+            <div class="presettings-content level-choice">
+              <input class="presetting-input level-input visually-hidden" type="radio" id="beginner" name="level" value="beginner"><label for="beginner" class="radio-btn level-btn beginner-btn">Beginner</label>
+              <input class="presetting-input level-input visually-hidden" type="radio" id="medium" name="level" value="medium"><label for="medium" class="radio-btn level-btn medium-btn">Medium</label>
+              <input class="presetting-input level-input visually-hidden" type="radio" id="advanced" name="level" value="advanced"><label for="advanced" class="radio-btn level-btn advanced-btn">Advanced</label>
+            </div>
+            <button type="button" class="presettings-btn btn btn-outline-light check-start">Let`s start</button>
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container-xxl header-navbar">
+        <a class="navbar-brand navbar-item" href="#main" data-link><span class="navbar-brand-logo"></span> Workout</a>
+        <span class="subpage"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link program-link navbar-item" aria-current="page" href="#program" data-link>Program</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link plan-link navbar-item" href="#plan" data-link>Plan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link stats-link navbar-item" href="#stats" data-link>Stats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link settings-link" href="#settings">Settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="app" class="main-app container-xxl">
+  </main>
+
+
+  <script src="js/spa/route.js"></script>
+  <script src="js/spa/router.js"></script>
+  <script src="js/spa/app.js"  type="module"></script>
+  <script src="index.js" type="module"></script>
+<!--
+-->
+
+</body>
+</html>
